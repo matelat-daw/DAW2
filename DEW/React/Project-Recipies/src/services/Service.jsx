@@ -45,7 +45,7 @@ export const getRecetas = async () => {
     }
   };
   
-  // Eliminar un alumno
+  // Eliminar una Receta
   export const deleteReceta = async (id) => {
     try {
         recetas = recetas.filter(receta => receta.id !== id);
