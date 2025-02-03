@@ -1,8 +1,12 @@
 import toast from './js/script.js';
 
-let recetas = await fetch("http://localhost:3000/recetas").then(respuesta => respuesta.json())
-                .catch(respuesta => toast(2, "Error de Conexión", "Lo Siento No hay Conexión con el Servidor. Asegurate de que el Servidor está en Ejecución. Error: " + respuesta))
-                // .then(respuesta => toast(0, "Todo Ha Ido Bien:", "Se han cargado los Datos del Servidor." + respuesta))
+let recetas = [];
+const [spinner, setSpinner] = useState(false);
+setSpinner(true);
+
+            recetas = fetch("http://localhost:3000/recetas").then(respuesta => respuesta.json())
+            .catch(respuesta => toast(2, "Error de Conexión", "Lo Siento No hay Conexión con el Servidor. Asegurate de que el Servidor está en Ejecución. Error: " + respuesta))
+            .finally(() => setSpinner(false));
 
 // Obtener todos los alumnos
 export const getRecetas = async () => {
