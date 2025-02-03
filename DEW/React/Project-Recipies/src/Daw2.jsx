@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const grupos = ["A", "B"];
+// const grupos = ["A", "B"];
 
 export default function Daw2()
 {

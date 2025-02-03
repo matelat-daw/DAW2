@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ name: '', description: '' });
+    const [formData, setFormData] = useState({ name: '', ingredientes: '' });
     // const [grupos, setItems] = useState([]);
 
   const handleChange = (e) => {
@@ -14,7 +14,7 @@ const Create = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createAlumno(formData);
+    await createReceta(formData);
     // Redirigir o actualizar la lista después de crear
     navigate("/read");
   };

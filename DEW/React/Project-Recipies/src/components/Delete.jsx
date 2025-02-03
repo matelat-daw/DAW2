@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { deleteAlumno } from '../services/Service';
+// import { deleteAlumno } from '../services/Service';
+import { deleteReceta } from '../services/Service';
 
 const Delete = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
   const handleDelete = async () => {
-    await deleteAlumno(parseInt(id));
+    await deleteReceta(parseInt(id));
     navigate('/read');
   };
 

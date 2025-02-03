@@ -11,7 +11,7 @@ setSpinner(true);
 // Obtener todos los alumnos
 export const getRecetas = async () => {
     try {
-      return alumnos2;
+      return recetas;
     } catch (error) {
       console.error('Error fetching items:', error);
     }

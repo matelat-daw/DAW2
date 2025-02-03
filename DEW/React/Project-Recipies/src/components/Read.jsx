@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getAlumnos } from '../services/Service';
+// import { getAlumnos } from '../services/Service';
+import { getReceta } from '../services/Service';
 import { useNavigate } from 'react-router-dom';
 import toast from '../services/js/script.js';
 
@@ -10,7 +11,7 @@ const [recetas, setItems] = useState([]);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const data = await getAlumnos();
+      const data = await getReceta();
       setItems(data);
     };
     fetchItems();
@@ -25,8 +26,8 @@ const [recetas, setItems] = useState([]);
         </thead>
         <tbody>
         {/* <script>{toast(0, "SÍ: ", "Se Han Cargado los Datos.")}</script> */}
-                {alumnos.map((alumno) => (
-                    <tr key={alumno.id}><td>{alumno.id}</td><td>{alumno.nombre}</td><td>{alumno.grupo}</td><td><button onClick={ (e) => navegar(`/Update/${alumno.id}`)} className='btn btn-primary'>Actualizar</button>&nbsp;&nbsp;<button onClick={(e)=> navegar(`/delete/${alumno.id}`)} className='btn btn-danger'>Eliminar</button></td></tr>
+                {recetas.map((receta) => (
+                    <tr key={receta.id}><td>{receta.id}</td><td>{receta.nombre}</td><td>{receta.tipoCocina}</td><td><button onClick={ (e) => navegar(`/Update/${receta.id}`)} className='btn btn-primary'>Actualizar</button>&nbsp;&nbsp;<button onClick={(e)=> navegar(`/delete/${receta.id}`)} className='btn btn-danger'>Eliminar</button></td></tr>
                 ))}
         </tbody>
       </table>
