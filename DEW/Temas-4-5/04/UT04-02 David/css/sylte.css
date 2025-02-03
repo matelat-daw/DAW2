@@ -1,0 +1,182 @@
+/* Estilo para campos válidos */
+input:valid, select:valid, textarea:valid {
+    border-color: green; /* Color de borde para campos válidos */
+    background-color: #d4edda; /* Fondo verde claro para campos válidos */
+}
+
+
+input[type="text"], input[type="password"], input[type="tel"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 10px;
+}
+
+input[type="text"]:disabled, input[type="password"]:disabled, select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Estilo general del formulario */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+main {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+fieldset > div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.back {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #6c757d;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Estilo para los contadores de caracteres */
+#conttitle, #contDesc {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.875em;
+    color: #888;
+}
+
+/* Estilo de los botones adicionales */
+a.btn {
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+}
+
+a.btn:hover {
+    background-color: #5a6268;
+}
+
+.errorText {
+    color: red;
+    font-size: 0.875em;
+}
+
+#logs > div {
+    display: flex;
+    flex-direction: row;
+    margin: 0.2rem;
+}
+#logs > div > span{
+color: red;
+}
+
+
+
+@media screen and (min-width: 900px) {
+    form{
+        min-width: 900px;
+    }
+
+    .DatoUser {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 0.5rem;
+    }
+    .DatoUser > div{
+        margin: 0.5rem;
+    }
+    
+    .DatoPersonal {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 0.5rem;
+    }
+    .DatoPersonal div{
+        margin: 0.5rem;
+    }
+    
+    .DniCuentaNacimiento{
+        display: grid;
+        grid-column: 1/3;
+        margin: 0.5rem;
+    }
+    
+    .DniCuentaNacimiento > div{
+        display: flex;
+        flex-direction: row;
+        margin: 0.5rem;
+        justify-content: space-between;
+    }
+    .DniNieCss{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin: 0.5rem;
+    }
+    
+    .DivAficiones{
+        display: grid;
+        grid-column: 1/3;
+        margin: 0.5rem;
+    }
+    
+    .aficiones{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+  }
+

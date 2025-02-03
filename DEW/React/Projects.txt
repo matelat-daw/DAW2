@@ -1,0 +1,23 @@
+npm create vite@latest
+
+cd "NAME_OF_THE_PROJECT"
+
+npm install
+
+Para Ejecutar:
+
+npm run dev
+
+Instalar Router:
+
+npm install react-router-dom
+
+npm install bootstrap
+
+npm install reactstrap
+
+Para Agregar el Encabezado a los Nuevos Componentes:
+
+rfc
+
+

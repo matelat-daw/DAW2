@@ -1,0 +1,39 @@
+{
+  "alumnos": [
+    {
+      "nombre": "Ana Beléna",
+      "grupo": "A",
+      "id": 19
+    },
+    {
+      "nombre": "Diego Pérez",
+      "grupo": "B",
+      "id": 22
+    },
+    {
+      "nombre": "César Matelat",
+      "grupo": "A",
+      "id": 25
+    },
+    {
+      "nombre": "Fernando González",
+      "grupo": "A",
+      "id": 26
+    },
+    {
+      "nombre": "Hola",
+      "grupo": "A",
+      "id": 27
+    }
+  ],
+  "grupos": [
+    {
+      "id": 1,
+      "grupo": "A"
+    },
+    {
+      "id": 2,
+      "grupo": "B"
+    }
+  ]
+}

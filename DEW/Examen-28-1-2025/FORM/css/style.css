@@ -1,0 +1,166 @@
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.15em;
+}
+
+label, input, select, textarea
+{
+    display: block;
+    font-size: .8em;
+}
+
+span
+{
+    visibility: hidden;
+}
+
+#account_required
+{
+    display: block;
+    visibility: visible;
+    font-size: small;
+    color: salmon;
+}
+
+.error
+{
+    visibility: visible;
+}
+
+input:invalid, textarea:invalid, select:invalid /* Si el campo es requerido y aun está vacío pone un borde color salmon a los campos. */
+{
+    border: 1px solid salmon;
+}
+
+input:invalid + #tit_required, input:invalid + #username_required, input:invalid + #pass_required, input:invalid + #userdata_required, input:invalid + #surname_required, input:invalid + #phone_required, input:invalid + #cp_required, input:invalid + #dni_required, select:invalid + #doc_required, select:invalid + #anio_required, textarea:invalid + #des_required
+{
+    visibility: visible;
+    font-size: small;
+    color: salmon;
+    display: block;
+}
+
+p
+{
+    display: inline-block;
+    visibility: visible;
+    font-size: small;
+    color: salmon;
+}
+
+fieldset
+{
+    border: 0;
+}
+
+legend
+{
+    border-bottom: 2px solid black;
+    width: 100%;
+}
+
+small
+{
+    float: right;
+    font-size: .66em;
+}
+
+#check, #checkit /* ID del input type checkbox para ver la contraseña y ID de la Label que muestra Mostrar Contraseña los situa en línea en el DOM. */
+{
+    display: inline-block;
+    margin-top: 16px;   
+}
+
+#year
+{
+    width: 20em;
+}
+
+.aside
+{
+    display: inline-block;
+}
+
+.separate
+{
+    padding: 15px 0;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+}
+
+.view1, .view2
+{
+    border: 1px solid blue;
+    border-radius: 25px;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.container-1col
+{
+    display: flex;
+    grid-template-columns: 1fr;
+    margin-top: 5px;
+}
+
+.container-2col
+{
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+}
+
+.container-3col
+{
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 20px;
+}
+
+.m-left
+{
+    margin-left: 2em;
+}
+
+.width-50
+{
+    width: 50%;
+}
+
+.width-33
+{
+    width: 33.33%;
+}
+
+.button
+{
+    padding-left: 10px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+}
+
+.btn
+{
+    width: 10em;
+    height: 5em;
+    background-color: aqua;
+}
+
+.btn:hover
+{
+    border: 2px solid blue;
+}
+
+.btn:active
+{
+    border: 2px solid white;
+}

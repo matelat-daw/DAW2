@@ -1,0 +1,56 @@
+main
+{
+    input[type=number] { 
+        -moz-appearance: textfield;
+        appearance: textfield;
+        margin: 0;
+        border-radius: 10px;
+        border: none;
+    }
+
+    #discount
+    {
+        font-size: small;
+    }
+
+    .img
+    {
+        width: 25%;
+    }
+
+    .inline_grid
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 5px 0 5px 0;
+        padding: 5px 0 5px 0;
+        border: 1px solid grey;
+        border-radius: 10px;
+    }
+
+    .round
+    {
+        border: none;
+        border-radius: 40%;
+        width: 24px;
+    }
+
+    .danger
+    {
+        background-color: red;
+        color: white;
+        width: 100px;
+        height: 42px;
+        font-weight: bolder;
+    }
+
+    .danger:hover
+    {
+        border: 2px solid black;
+    }
+
+    .danger:active
+    {
+        border: 2px solid white;
+    }
+}

@@ -1,0 +1,48 @@
+@media (prefers-color-scheme: dark) /* Media Query que Detecta Cuando el Navegador Está Configurado para Usar el Modo Oscuro (dark). */
+{
+    body{
+        --color-texto: #fff;
+        --color-fondo: #020329;
+        --color-header_back: #252525;
+        --color-header: #fff;
+        --color-aside: #0a0a0a;
+        --color-nav_aside_back: #505050;
+        --color-button_back: #474747;
+        --color-button: wheat;
+        --color-a: #fff;
+        --color-hover: #333;
+        --color-footer_back: #505050;
+        --color-footer: white;
+    }
+}
+
+.dark /* Modo Oscuro */
+{
+    --color-texto: #fff;
+    --color-fondo: #020329;
+    --color-header_back: #252525;
+    --color-header: #fff;
+    --color-aside: #0a0a0a;
+    --color-nav_aside_back: #505050;
+    --color-button_back: #474747;
+    --color-button: wheat;
+    --color-a: #fff;
+    --color-hover: #333;
+    --color-footer_back: #505050;
+    --color-footer: white;
+}
+
+.light /* Modo Claro */
+{
+    --color-texto: #000;
+    --color-fondo: #04a9db;
+    --color-header_back: #7A94D3;
+    --color-header: #000;
+    --color-nav_aside_back: #08a4ff;
+    --color-button_back: #0000f2;
+    --color-button: wheat;
+    --color-a: #000;
+    --color-hover: #80a9db;
+    --color-footer_back: #08a4ff;
+    --color-footer: #000;
+}

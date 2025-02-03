@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona la Forma de Pago</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/payment.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="light">
+    <header>
+        <div><img src="../media/imgs/fruta.webp" alt="Logo de la Empresa Frutas del Mundo" class="logo-size"></div>
+        <div>
+            <h1 class="big-letter">Frutas del Mundo</h1>
+        </div>
+        <div>
+            <div class="repair">
+                <a href="#" class="nav-link sort"><p>Contacto</p></a>
+                <a href="#" class="nav-link sort"><p>LogIn</p></a>
+                <a href="#" class="nav-link sort"><p>Me Registro</p></a>
+            </div>
+            <div>
+                <a href="javascript:changeStyle('light', 'user')"><i id="lightMode" class="bi bi-brightness-high double nav-link" aria-label="Cambia a Tema Claro"></i></a>
+                <a href="javascript:changeStyle('dark', 'user')"><i id="darkMode" class="bi bi-moon-stars double nav-link" aria-label="Cambia a Tema Oscuro"></i></a>
+            </div>
+            <div>
+                <button onclick="changeSize('down')" class="double equal nav-link" aria-label="Disminuye el Tamaño de la Letra">-f</button>
+                <button onclick="changeSize('up')" class="double equal nav-link" aria-label="Aumenta el Tamaño de la Letra">F+</button>
+            </div>
+            <div>
+                <button onclick="checkout('../cart/index.html')" class="double equal nav-link"><i class="bi bi-cart-check-fill"></i><span class="xsmall">CheckOut</span></button>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="tabs">
+            <a href="../cart/index.html"><span>Carrito</span></a>&nbsp;<a href="../data/index.html"><span>Datos de Cliente</span></a>&nbsp;<span class="here">Forma de Pago</span>&nbsp;<span>Resumen</span>
+        </div>
+    </nav>
+    <div class="container">
+        <nav id="nav"> <!-- La id se usa para Mostrar Ocultar el Elemento. -->
+            <a href="../index.html" class="nav-link sort">Página de Inicio</a>
+            <p><strong>Nuestro Catálogo</strong></p>
+            <a href="../catalog/index.html" class="nav-link sort">Frutas de Cercanias</a>
+            <a href="../catalog/index.html" class="nav-link sort">Frutas de Temporada</a>
+            <a href="../catalog/index.html" class="nav-link sort">Frutas Tropicales</a>
+            <a href="../catalog/index.html" class="nav-link sort">Frutas exóticas</a>
+        </nav>
+        <select id="select" onchange="visit(this.value)"> <!-- La id se usa para Mostrar Ocultar el Elemento. -->
+            <option value="">Selecciona una Opción</option>
+            <option value="../index.html">Página de Inicio</option>
+            <optgroup label="Nuetro Catálogo">
+                <option value="../catalog/index.html">Frutas de Cercanias</option>
+                <option value="../catalog/index.html">Frutas de Temporada</option>
+                <option value="../catalog/index.html">Frutas Tropicales</option>
+                <option value="../catalog/index.html">Frutas exóticas</option>
+            </optgroup>
+        </select>
+        <aside>
+            <div class="nav-flex nav-vertical">
+                <a href="../catalog/index.html" class="nav-link">¡Ofertas!</a>
+                <a href="../catalog/index.html" class="nav-link">Batidos en el Momento</a>
+                <a href="../catalog/index.html" class="nav-link">Ensalada de Frutas</a>
+                <a href="../catalog/index.html" class="nav-link">Fruta Congelada</a>
+                <a href="../catalog/index.html" class="nav-link">Mix de Frutas Congeladas</a>
+            </div>
+        </aside>
+        <main>
+            <h1>Pasarela de Pago.</h1>
+            <h2>Total a Pagar + I.G.I.C.: <span id="total"></span> €<span> Incluye Transporte</span></h2>
+            <h3>Selecciona tu Método de Pago:</h3>
+            <button id="btn-transfer" onclick="showTransfer('Transferencia')">Tranferencia Bancaria</button>
+            <input id="payment" type="hidden" value="">
+
+            <div id="transfer">
+                <h3>Este es nuestro IBAN: ES00 1111 123456789123 9999</h3>
+                <h4>Por Favor haz una Transferencia a ese Número Cuenta por el Importe que Figura en la Página</h4>
+                <p>En la Referencia pon: Pedido Nº: Cli-25-00126</p>
+                <p>Ten en Cuenta que la Transferencia Puede Tardar hasta 48 Hs. En Cuanto la Recibamos, Enviaremos tu Pedido por Medio del Transportista que Hayas Seleccionado.</p>
+                <form method="post" enctype="multipart/form-data" onsubmit="noSend(event)">
+                    <input id="pdf" type="file" name="comprobante" accept=".pdf">
+                    <label for="pdf"> Sube el Comprobante de Pago en PDF, Para Acortar los Plazos de Entrega. Gracias.</label>
+                    <br><br>
+                    <input class="send" type="submit" value="Envia el Comprobante">
+                </form>
+            </div>
+            <br><br>
+            <div id="paypal-button"></div>
+            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+            <div class="next">
+                <input id="next" type="button" onclick="storePayment()" value="Siguiente">
+            </div>
+
+<script>
+
+  paypal.Button.render({
+    env: 'sandbox',
+
+    client: {
+
+      sandbox: 'demo_sandbox_client_id',
+
+      production: 'demo_production_client_id'
+
+    },
+
+    locale: 'es_ES',
+
+    style: {
+        size: 'small', color: 'gold', shape: 'pill',
+    },
+
+    commit: true,
+
+    payment: function(data, actions) {
+
+      return actions.payment.create({
+
+        transactions: [{
+
+            amount: {
+                  total: getTotal(), currency: 'EUR'
+            }
+        }]
+      });
+    },
+
+    onClick() {
+        showTransfer("PayPal");
+    },
+
+    onAuthorize: function(data, actions) {
+
+      return actions.payment.execute().then(function() {
+
+        window.alert('Gracias por tu Compra!');
+
+      });
+
+    }
+
+  }, '#paypal-button');
+
+</script>
+        </main>
+    </div>
+    <footer>
+        <div class="footer">
+            <div>
+                <p>Codiciones de Uso del Sitio</p>
+                <ul>
+                    <li><a href="#">Condiciones de Uso</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Sin Cookies</a></li>
+                </ul>
+            </div>
+            <div>
+                <p>Servicio</p>
+                <ul>
+                    <li><a href="#">Como Comprar</a></li>
+                    <li><a href="#">Zona de repato</a></li>
+                    <li><a href="#">Servicio de entrega personalizado</a></li>
+                    <li><a href="#">Necesidades especiales.</a></li>
+                </ul>
+            </div>
+            <div>
+                <p>Acerca de Nosotros</p>
+                <ul>
+                    <li><a href="../about/index.html">Quienes somos</a></li>
+                    <li><a href="../about/index.html">Nuetra Mision, Vision y Valores</a></li>
+                    <li><a href="../about/index.html">Responsabilidad y compromiso Social</a></li>
+                    <li><a href="../about/index.html">Nuestras Tiendas</a></li>
+                    <li><a href="../about/index.html">Tienda Online, Registrate para Comprar</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+    <script src="../js/payment.js"></script>
+    <script>showTotal()</script>
+</body>
+</html>

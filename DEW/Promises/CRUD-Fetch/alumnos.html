@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con Promesas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <button id="alerta" type="button" class="btn btn-primary" style="visibility: hidden;" data-bs-toggle="modal" data-bs-target="#alertDialog">Diálogo</button>
+
+<!-- Modal -->
+<div class="modal fade" id="alertDialog" tabindex="-1" aria-labelledby="alertDialogLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="alertDialogLabel">Dialogo de Avisos</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <h3><span id="title"></span></h3>
+          <h4 id="message"></h4>
+      </div>
+      <div class="modal-footer">
+      <button type="button" id="close_dialog" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+<button id="alertaDelete" type="button" class="btn btn-primary" style="visibility: hidden;" data-bs-toggle="modal" data-bs-target="#alertDialogDelete">Diálogo</button>
+
+<!-- Modal -->
+<div class="modal fade" id="alertDialogDelete" tabindex="-1" aria-labelledby="alertDialogLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="alertDialogLabel2">Dialogo de Avisos</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3 id="titleDelete"></h3>
+        <h4 id="messageDelete"></h4>
+      </div>
+      <div class="modal-footer">
+      <button type="button" id="close_dialog1" class="btn btn-secondary" data-bs-dismiss="modal" onclick="formClean()">Cancelar</button>
+      <button type="button" id="close_dialog2" class="btn btn-danger" data-bs-dismiss="modal" onclick="crudDelete(DOM.id.value)">Aceptar</button>
+      </div>
+  </div>
+  </div>
+</div>
+    <h1>CRUD de Alumnos con Server Local</h1>
+    <br>
+    <nav>
+        <div class="tabs">
+            <a href="index.html"><span>Inicio</span></a>&nbsp;&nbsp;<span class="here">Base de Dartos de Alumnos</span>&nbsp;&nbsp;<span>Quienes Somos</span>&nbsp;&nbsp;<span>Misión, Visión y Valores</span>&nbsp;&nbsp;<span>Contacto</span>
+        </div>
+    </nav>
+    <input type="button" onclick="checkForm()" value="Agregar Alumno" class="btn btn-success btn-lg">
+    <hr>
+    <div id="userData">
+        <table class="table">
+            <thead><tr><th>ID</th><th>Nombre</th><th>Grupo</th><th>Acciones</th></tr></thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+    <h4>Para Agregar un Alumno Rellena Solo los Campos Nombre y Grupo y Haz Click en el Botón Agregar Alumno</h4>
+    <br>
+    <div class="form">
+        <div>
+            <label for="id"> ID</label>
+            <br>
+            <input id="id" type="text" readonly>
+        </div>
+        <br>
+        <div>
+            <label for="nombre"> Nombre</label>
+            <br>
+            <input id="nombre" type="text" required>
+            <span id="name" class="span">Rellena este Campo Por Favor.</span>
+        </div>
+        <br>
+        <div>
+            <label for="grupo"> Grupo</label>
+            <br>
+            <select id="grupo" required>
+                <option value="">Selecciona un Grupo</option>
+            </select>
+            <span id="group" class="span">Selecciona un Valor en este Campo Por Favor.</span>
+        </div>
+        <br><br>
+        <div id="updateIt">
+            <input type="button" value="Actualizar" onclick="crudUpdate(DOM.id.value)" class="btn btn-primary btn-lg">
+            <input type="button" value="Cancelar" onclick="formClean()" class="btn btn-info btn-lg">
+        </div>
+    </div>
+    <br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

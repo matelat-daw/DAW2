@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form - ejemplo 02</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <section id="formulario">
+        <h1>Formulario</h1>
+        <form action="http://localhost/formGet/datos.php" method="post" id="form" novalidate>
+            
+            <fieldset class="userdata">
+                <legend>Datos Usuario</legend>
+                <div>
+                    <label for="userdata_username">Nombre de usuario</label>
+                    <input minlength="4" maxlength="20" type="text" name="NombreUsuario" id="userdata_username" placeholder="Nombre de usuario" required>
+                    <span class="errormessage" id="userdata-error_username"></span>
+                </div>
+                <div>
+                    <div>
+                        <label for="userdata_password">Contraseña</label>
+                        <input pattern="^\d{8}$" maxlength="8" type="password" name="Contrasena" id="userdata_password" placeholder="Contraseña" required>
+                        <span class="errormessage" id="userdata-error_password"></span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="showpassword" id="userdata_showpassword">
+                        <label for="userdata_showpassword">Mostrar contraseña</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="personaldata">
+                <legend>Datos Personales</legend>
+                <div class="personaldata-div_doctype">
+                    <div>
+                        <label for="personaldata-select_dninie">DNI/NIE</label>
+                        <div class="field-doc">
+                            <select name="TipoDocumento" id="personaldata-select_dninie" required>
+                                <option value="" disabled selected>---</option>
+                                <option value="DNI">DNI</option>
+                                <option value="NIE">NIE</option>
+                            </select>
+                            <input name="DniNie" type="text" placeholder="DNI / NIE" id="personaldata-input_dninie" maxlength="9" disabled required>         
+                            <span class="errormessage" id="personaldata-select-error_doctype"></span>
+                            <span class="errormessage" id="personaldata-input-error_doctype"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <span>Crear cuenta como:</span>
+                        <div class="field-group">
+                            <div>
+                                <input type="radio" name="CuentaComo" value="particular" id="accounttype_particular" required>
+                                <label for="accounttype_particular">Particular</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="CuentaComo" value="empresa" id="accounttype_empresa" required>
+                                <label for="accounttype_empresa">Empresa</label>
+                            </div>
+                            <span class="errormessage" id="personaldata-error_accounttype"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="personaldata_birthyear">Año de nacimiento</label>
+                        <select name="AnioNacimiento" id="personaldata_birthyear" required>
+                            <option value="" disabled selected>Selecciona un año</option>
+                        </select>
+                        <span class="errormessage" id="personaldata-error_birthyear"></span>
+                    </div>
+                </div>
+                <div class="personaldata-div_hobbies">
+                    <span>Elige tus aficiones:</span>            
+                    <div class="aficiones">
+                        <div>
+                            <input type="checkbox" value="MU" id="musica">
+                            <label for="musica">Música</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" value="MA" id="manualidades">
+                            <label for="manualidades">Manualidades</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" value="DE" id="deporte">
+                            <label for="deporte">Deporte</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" value="AR" id="artes">
+                            <label for="artes">Artes</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" value="VI" id="videojuegos">
+                            <label for="videojuegos">Videojuegos</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" value="LE" id="lectura">
+                            <label for="lectura">Lectura</label>
+                        </div>
+                        <input type="text" id="personaldata_hobbies" name="Aficiones" hidden required>
+                        <span class="errormessage" id="personaldata-error_hobbies"></span>
+                    </div>
+                </div>
+                
+            </fieldset>
+
+            <input type="submit" value="Enviar">
+        </form>      
+    </section>
+    <section id="errores">
+    </section>
+    <script src="./script.js" type="module"></script>
+</body>
+</html>

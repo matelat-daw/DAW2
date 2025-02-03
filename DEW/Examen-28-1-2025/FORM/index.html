@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Estilizado</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="view1">
+            <h1>Te Damos la Bienvenida a la Actividad UT04-02</h1>
+            <main>
+                <form id="form" action="data.php" method="post" novalidate>
+                    <fieldset>
+                        <legend>Datos de Usuario</legend>
+                        <div class="container-2col">
+                            <div class="width-50">
+                                <label for="username">Nombre de Usuario</label>
+                                <input id="username" type="text" name="NombreUsuario" placeholder="Nombre de Usuario" size="60" required>
+                                <span id="username_required">Escribe tu Nick</span>
+                            </div>
+                            <div class="width-50 m-left">
+                                <label for="pass">Contraseña</label>
+                                <input id="pass" type="password" name="Contrasena" placeholder="Introduce Contraseña (8 Números)" size="60" pattern="[0-9]{8}$" maxlength="8" required>
+                                <span id="pass_required">Tu Contraseña</span>
+                                <input id="check" type="checkbox">
+                                <label id="checkit" for="check">Mostrar Contraseña</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos Personales</legend>
+                        <div class="container-2col">
+                            <div class="width-50">
+                                <label for="userdata">Nombre</label>
+                                <input id="userdata" type="text" name="Nombre" placeholder="Nombre" size="60" required>
+                                <span id="userdata_required">Tus Nombres</span>
+                            </div>
+                            <div class="width-50 m-left">
+                                <label for="surnames">Apellidos</label>
+                                <input id="surname" type="text" name="Apellidos" placeholder="Apellidos" size="60" required>
+                                <span id="surname_required">Tus Apellidos</span>
+                            </div>
+                        </div>
+                        <div class="container-2col separate">
+                            <div class="width-50">
+                                <label for="phone">Teléfono</label>
+                                <input id="phone" type="tel" name="Telefono" placeholder="Ejem: (+34)922123123" size="60" required>
+                                <span id="phone_required">Número de Teléfono</span>
+                            </div>
+                            <div class="width-50 m-left">
+                                <label for="cp">Código Postal</label>
+                                <input id="cp" type="number" name="CodigoPostal" placeholder="38XXX" maxlength="5" min="38000" max="38999" pattern="[0-9]{5}" size="58" required>
+                                <span id="cp_required">Tu Cógigo Postal</span>
+                            </div>
+                        </div>
+                        <div class="container-3col">
+                            <div class="width-33">
+                                <label for="doc">DNI/NIE</label>
+                                <select id="doc" class="aside" name="TipoDocumento" required>
+                                    <option value="">...</option>
+                                    <option value="DNI">DNI</option>
+                                    <option value="NIE">NIE</option>
+                                </select>
+                                <span id="doc_required">Debes Seleccionar un Tipo de Documento</span>
+                                <input id="dni" class="aside" type="text" name="DniNie" placeholder="DNI/NIE" size="40" required disabled>
+                                <span id="dni_required">El D.N.I. es Obligatorio</span>
+                            </div>
+                            <div class="width-33 m-left">
+                                <label>Crear Cuenta Como:</label>
+                                <div class="aside">
+                                    <input id="par" class="aside" type="radio" name="CuentaComo" value="particular" required><label for="par" class="aside">Particular</label>
+                                    <input id="emp" class="aside" type="radio" name="CuentaComo" value="empresa"><label for="emp" class="aside">Empresa</label>
+                                    <span id="account_required">Selecciona tu Tipo Cuenta</span>
+                                </div>
+                            </div>
+                            <div class="width-33 m-left">
+                                <label for="year">Año de Nacimiento</label>
+                                <select id="year" name="AnioNacimiento" required>
+                                    <option value="">Selecciona Tu Año de Nacimiento</option>
+                                </select>
+                                <span id="anio_required">Tu Año de Nacimiento</span>
+                            </div>
+                        </div>
+                        <div class="container-3col">
+                            <div class="width-33">
+                                <label>Elige tus Aficiones:</label>
+                                <div class="separate">
+                                    <input class="aside" type="checkbox" id="music" value="MU">
+                                    <label for="music" class="aside">Música</label>
+                                </div>
+                                <div>
+                                    <input class="aside" type="checkbox" id="handmade" value="MA">
+                                    <label for="handmade" class="aside">Manualidades</label>
+                                </div>
+                            </div>
+                            <div class="col-2 width-33">
+                                <label>&nbsp;</label>
+                                <div class="separate">
+                                    <input class="aside" type="checkbox" id="sport" value="DE">
+                                    <label for="sport" class="aside">Deporte</label>
+                                </div>
+                                <div>
+                                    <input class="aside" type="checkbox" id="art" value="AR">
+                                    <label for="art" class="aside">Artes</label>
+                                </div>
+                            </div>
+                            <div class="col-3 width-33">
+                                <label>&nbsp;</label>
+                                <div class="separate">
+                                    <input class="aside" type="checkbox" id="games" value="JU">
+                                    <label for="games" class="aside">Vídeo Juegos</label>
+                                </div>
+                                <div>
+                                    <input class="aside" type="checkbox" id="lecture" value="LE">
+                                    <label for="lecture" class="aside">Lectura</label>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="Aficiones" id="aficiones" required>
+                        <p id="hobby_required">Selecciona Al Menos 2 Aficiones.</p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos de Publicación</legend>
+                        <div class="container-1col">
+                            <div>
+                                <label for="tit">Título</label>
+                                <input id="tit" maxlength="15" type="text" name="PublicacionTitulo" placeholder="Título" size="125" required>
+                                <span id="tit_required">Escribe un Título</span>
+                                <small>/15</small><small id="title">0</small>
+                            </div>
+                        </div>
+                        <div class="container-1col">
+                            <div class="separate">
+                                <label for="des">Descripción</label>
+                                <textarea id="des" maxlength="120" name="PublicacionDescripcion" cols="155" rows="10" required></textarea>
+                                <span id="des_required">Danos tu Descripción</span>
+                                <small>/120</small><small id="desc">0</small>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="button">
+                        <input id="form_submit" class="btn" type="submit" value="Envíame!">
+                    </div>
+                </form>
+            </main>
+        </div>
+        <div class="view2">
+            <h1 class="center">Lista de Errores</h1>
+            <h3>Cuando no haya Errores en el Formulario no Verás Nada Aquí.</h3>
+            <div><span class="error">Nombre de Usuario: </span><p id="username_error"></p></div>
+            <div><span class="error">Contraseña: </span><p id="pass_error"></p></div>
+            <div><span class="error">Nombres: </span><p id="userdata_error"></p></div>
+            <div><span class="error">Apellidos: </span><p id="surname_error"></p></div>
+            <div><span class="error">Teléfono: </span><p id="phone_error"></p></div>
+            <div><span class="error">Código Postal: </span><p id="cp_error"></p></div>
+            <div><span class="error">Tipo de Documento: </span><p id="doc_error"></p></div>
+            <div><span class="error">DNI/NIE: </span><p id="dni_error"></p></div>
+            <div><span class="error">Cuenta: </span><p id="account_required_error"></p></div>
+            <div><span class="error">Año de Nacimiento: </span><p id="year_error"></p></div>
+            <div><span class="error">Aficiones: </span><p id="hobby_required_error"></p></div>
+            <div><span class="error">Título: </span><p id="tit_error"></p></div>
+            <div><span class="error">Descripción: </span><p id="des_error"></p></div>
+        </div>
+    </div>
+    <!-- <script src="js/main.js" type="module"></script> -->
+    <script src="js/main2.js" type="module"></script>
+</body>
+</html>

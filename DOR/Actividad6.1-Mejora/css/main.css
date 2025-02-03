@@ -1,0 +1,160 @@
+/* Media Queries */
+
+@media screen and (min-width: 576px )
+{
+    main
+    {
+
+        article > ul
+        {
+            list-style: none;
+        }
+    }
+
+    footer
+    {
+        .footer
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media  screen and (min-width: 912px), (min-width: 576px ) and (orientation: landscape)
+{
+    #select
+    {
+        display: none
+    }
+
+    #nav
+    {
+        display: block;
+    }
+
+    .container
+    {
+        display: grid;
+
+        .article
+        {
+            width: 95%;
+            height: 95%;
+        }
+
+        article > ul
+        {
+            list-style: none;
+        }
+        
+        nav
+        {
+            grid-column: 1 / 3;
+        }
+    }
+
+    .main
+    {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    footer
+    {
+        .footer
+        {
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+        }
+    }
+}
+
+@media screen  and (min-width: 1024px) {
+
+    header
+    {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    header > .nowrap
+    {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .container
+    {
+        nav
+        {
+            grid-column: 1 / 2;
+        }
+
+        aside
+        {
+            grid-column: 1 / 2;
+        }
+
+        main
+        {
+            grid-row: 1 / 3;
+            grid-column: 2 / 2;
+
+            .section-main-margin
+            {
+                margin-left: 25px;
+                margin-top: 25px;
+            }
+
+            .section-main-margin-up
+            {
+                margin-left: 25px;
+                margin-top: 25px;
+                margin-bottom: 4.8em;
+            }
+
+            .section-secondary
+            {
+                width: 24em;
+                height: 20em;
+                margin-left: 8px;
+                margin-top: 8px;
+            }
+
+            article > ul
+            {
+                list-style: none;
+            }
+        }
+
+        .main
+        {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .main-2col
+        {
+            grid-template-columns: 1fr 1fr;
+            img
+            {
+                width: 78%;
+                height: 20em;
+            }
+        }
+
+        .main-3col
+        {
+            grid-template-columns: 1fr 1fr 1fr;
+            img
+            {
+                width: 50%;
+                height: 15em;
+            }
+        }
+
+        #nav > a
+        {
+            display: flex;
+        }
+    }
+}
