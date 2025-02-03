@@ -5,7 +5,8 @@ import toast from '../services/js/script.js';
 
 const Read = () => {
     const navegar = useNavigate();
-  const [alumnos, setItems] = useState([]);
+//   const [alumnos, setItems] = useState([]);
+const [recetas, setItems] = useState([]);
 
   useEffect(() => {
     const fetchItems = async () => {

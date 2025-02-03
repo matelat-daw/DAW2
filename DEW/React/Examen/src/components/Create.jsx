@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ name: '', description: '' });
+    const [formData, setFormData] = useState({ nombre: '', grupo: '' });
     const [grupos, setItems] = useState([]);
 
   const handleChange = (e) => {
