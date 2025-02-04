@@ -9,7 +9,6 @@ import Delete from './components/Delete';
 
 createRoot(document.getElementById('root')).render(
     <Router>
-        <div className="App">
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<Inicio />}></Route>
@@ -20,6 +19,5 @@ createRoot(document.getElementById('root')).render(
                 <Route path="*" element={<Navigate to="/" replace="true"/>}></Route>
             </Route>
         </Routes>
-        </div>
     </Router>
   );
