@@ -23,8 +23,8 @@ const Read = () => {
             <tr><th>ID</th><th>Nombre</th><th>Grupo</th><th>Acciones</th></tr>
         </thead>
         <tbody>
-            {alumnos.map((alumno) => (
-                <tr key={alumno.id}><td>{alumno.id}</td><td>{alumno.nombre}</td><td>{alumno.grupo}</td><td><button onClick={(e) => navegar(`/create/${alumno.id}`)} className='btn btn-primary'>Actualizar</button>&nbsp;&nbsp;<button onClick={(e)=> navegar(`/delete/${alumno.id}`)} className='btn btn-danger'>Eliminar</button></td></tr>
+            {alumnos.map((alumno, i) => (
+                <tr key={i}><td>{alumno.id}</td><td>{alumno.nombre}</td><td>{alumno.grupo}</td><td><button onClick={(e) => navegar(`/create/${alumno.id}`)} className='btn btn-primary'>Actualizar</button>&nbsp;&nbsp;<button onClick={(e)=> navegar(`/delete/${alumno.id}`)} className='btn btn-danger'>Eliminar</button></td></tr>
             ))}
         </tbody>
       </table>
