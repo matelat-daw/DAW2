@@ -15,7 +15,7 @@ const Delete = () => {
     <div>
       <h2>Eliminar el Alumno con ID: {id}</h2>
       <p>¿Estás Seguro que Quieres Eliminar ese Alumno?</p>
-      <button onClick={handleDelete}>Eliminar</button>
+      <button onClick={handleDelete}>Eliminar</button>&nbsp;&nbsp;
       <button onClick={() => navigate('/read')}>Cancel</button>
     </div>
   );
