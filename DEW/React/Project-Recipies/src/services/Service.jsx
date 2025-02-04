@@ -1,12 +1,12 @@
 import toast from './js/script.js';
 
 let recetas = [];
-const [spinner, setSpinner] = useState(false);
-setSpinner(true);
+// const [spinner, setSpinner] = useState(false);
+// setSpinner(true);
 
             recetas = fetch("http://localhost:3000/recetas").then(respuesta => respuesta.json())
             .catch(respuesta => toast(2, "Error de Conexión", "Lo Siento No hay Conexión con el Servidor. Asegurate de que el Servidor está en Ejecución. Error: " + respuesta))
-            .finally(() => setSpinner(false));
+            // .finally(() => setSpinner(false));
 
 // Obtener todos los alumnos
 export const getRecetas = async () => {
@@ -27,7 +27,7 @@ export const getRecetas = async () => {
 //   };
   
   // Crear una nueva Receta
-  export const createRecta = async (receta) => {
+  export const createReceta = async (receta) => {
     try {
       receta.id = recetas.length ? recetas[recetas.length - 1].id + 1 : 1;
       recetas.push(receta);
@@ -57,3 +57,11 @@ export const getRecetas = async () => {
       console.error('Error deleting item:', error);
     }
   };
+
+  export const getRecipie = async (id) => {
+    try {
+      return recetas.find(receta => receta.id === parseInt(id)).filter(receta => receta.recipies);
+    } catch (error) {
+      console.error('Error fetching item:', error);
+    }
+  }

@@ -12,16 +12,16 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/create">Crear Alumno</Link>
+              <Link to="/create">Crear Receta</Link>
             </li>
             <li>
-              <Link to="/read">Leer Alumnos</Link>
+              <Link to="/read">Leer Recetas</Link>
             </li>
             <li>
-              <Link to="/update">Actualizar Alumno</Link>
+              <Link to="/update">Actualizar Receta</Link>
             </li>
             <li>
-              <Link to="/delete">Eliminar Alumno</Link>
+              <Link to="/delete">Eliminar Receta</Link>
             </li>
           </ul>
         </nav>
