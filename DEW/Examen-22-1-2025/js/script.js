@@ -172,14 +172,14 @@ function Ejercicio02_1()
     // let result = recetas.filter(receta => !receta.ingredientes.some(ingrediente => ingrediente.toLowerCase().includes("garlic")));
 }
 
-function Ejercicio02_2Llamada(arrayRecetas, tipoCocina)
+function Ejercicio02_2Llamada(arrayRecetas, ...tipoCocina)
 {
     let i = 0;
     let resultado = tipoCocina.forEach(tipo => arrayRecetas.map(receta => receta.tipoCocina == tipo).reduce(contador => contador++));
     console.log(resultado);
 }
 
-function Ejercicio02_3Llamada(arrayRecetas, calorias, tipoCocina)
+function Ejercicio02_3Llamada(arrayRecetas, calorias, ...tipoCocina)
 {
     let i = 0;
     let resultado = tipoCocina.forEach(tipo => arrayRecetas.map(receta => receta.calorias != calorias));

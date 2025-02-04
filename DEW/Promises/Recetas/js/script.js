@@ -30,7 +30,6 @@ function crearElementos (blobImg)
     div = document.createElement("div");
     img = document.createElement("img");
     div.appendChild(img);
-    // document.body.appendChild(div);
     img.src = URL.createObjectURL(blobImg);
     DOM.flex.appendChild(div);
 }
