@@ -7,9 +7,8 @@ export default function Layout()
         <main>
             <nav>
                 <Link to="/">Inicio |</Link>
-                <Link to="/Read">Lista de Alumnos |</Link>
-                <Link to="/Create">Agrega un Alumno |</Link>
-                <Link to="/Daw2">2º DAW</Link>
+                <Link to="/Read">Lista de Recetas |</Link>
+                <Link to="/Create">Agrega una Receta |</Link>
             </nav>
             <div>
                 <Outlet />

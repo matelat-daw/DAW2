@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-// import { createAlumno, getGrupos } from '../services/Service';
-import { createReceta, } from '../services/Service';
-import { useNavigate } from 'react-router-dom';
+import { createReceta, getRecetas, } from '../services/Service';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Create = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ name: '', ingredientes: '' });
-    // const [grupos, setItems] = useState([]);
+    const [formData, setFormData] = useState({ name: '', difficulty: '', cuisine: '' });
+    const { id } = useParams();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,13 +18,24 @@ const Create = () => {
     navigate("/read");
   };
 
-//   useEffect(() => {
-//       const fetchItems = async () => {
-//         const data = await getGrupos();
-//         setItems(data);
-//       };
-//       fetchItems();
-//     }, []);
+useEffect(() => {
+    if (id)
+    {
+        const fetchItem = async () => {
+        const recetas = await getRecetas();
+        const receta = recetas.find((receta) => receta.id === parseInt(id));
+            if (receta)
+            {
+                setFormData(receta);
+            }
+            else
+            {
+                console.error('Receta no Encontrada.');
+            }
+        };
+        fetchItem();
+    }
+}, [id]);
 
   return (
     <div>
@@ -36,16 +46,6 @@ const Create = () => {
         <input type="text" name="difficulty" value={formData.difficulty} onChange={handleChange} placeholder="Dificultad" required />
         <br /><br />
         <input type="text" name="cuisine" value={formData.cuisine} onChange={handleChange} placeholder="Tipo de Cocina" required />
-        <br /><br />
-        {/* <input name="grupo" value={formData.grupo} onChange={handleChange} placeholder="Grupo" />
-        <br /><br /> */}
-
-        {/* <label htmlFor="grupo">Grupo:</label> */}
-        {/* <select name="grupo" id="grupo" placeholder="Grupo" onChange={handleChange} required>
-            <option value={""}>Selecciona un Grupo</option>
-            { grupos.map( (grupo, i) => <option key={`${i}+${grupo}`} value={grupo}>Grupo: {grupo}</option>)}
-        </select> */}
-
         <br /><br />
         <button type="submit" className='btn btn-success'>Agregar Receta</button>
       </form>
