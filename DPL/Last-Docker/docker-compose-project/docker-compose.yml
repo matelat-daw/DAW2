@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  wildfly:
+    image: jboss/wildfly:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app1/target/app1.war:/opt/jboss/wildfly/standalone/deployments/app1.war
+      - ./app2/target/app2.war:/opt/jboss/wildfly/standalone/deployments/app2.war
+
+  tomcat:
+    image: tomcat:9.0
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./app1/target/app1.war:/usr/local/tomcat/webapps/app1.war
+      - ./app2/target/app2.war:/usr/local/tomcat/webapps/app2.war
+
+  app1:
+    build: ./app1
+    container_name: app1
+    depends_on:
+      - wildfly
+
+  app2:
+    build: ./app2
+    container_name: app2
+    depends_on:
+      - wildfly
