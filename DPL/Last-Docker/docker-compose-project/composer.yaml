@@ -1,0 +1,25 @@
+services:
+  tomcat-server:
+    image: tomcat:latest
+    container_name: tomcat_server
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    volumes:
+      - /home/cesar/last_docker/tomcat.war:/usr/local/tomcat/webapps/tomcat.war
+    networks:
+      - my_network
+
+  wildfly-server:
+    image: wildfly:latest
+    container_name: wildfly_server
+    ports:
+      - "8081:8080"
+    volumes:
+      - /home/cesar/last_docker/animals.war:/opt/jboss/wildfly/standalone/deployments/animals.war
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    name: my_network

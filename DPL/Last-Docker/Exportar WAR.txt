@@ -1,0 +1,74 @@
+Configurar el proyecto para empaquetar como WAR:
+
+Abre el archivo pom.xml de tu proyecto.
+Asegúrate de que el empaquetado esté configurado como war:
+
+<packaging>war</packaging>
+
+
+Añade las dependencias necesarias para Spring Boot y el plugin de Maven para empaquetar el proyecto:
+
+<dependencies>
+    <!-- Otras dependencias -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <mainClass>com.example.YourApplication</mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+
+Modificar la clase principal de la aplicación:
+Modifica la clase principal de tu aplicación para extender SpringBootServletInitializer y sobrescribir el método configure:
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+@SpringBootApplication
+public class YourApplication extends SpringBootServletInitializer {
+
+    public static void main(String[] args) {
+        SpringApplication.run(YourApplication.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(YourApplication.class);
+    }
+}
+
+
+Construir el archivo WAR:
+Abre la terminal en IntelliJ o usa la terminal de tu sistema operativo.
+Navega al directorio raíz de tu proyecto.
+Ejecuta el siguiente comando para construir el archivo WAR:
+
+mvn clean package
+
+
+Encontrar el archivo WAR:
+
+Una vez que el comando anterior se haya ejecutado correctamente, encontrarás el archivo WAR generado en el directorio target de tu proyecto.
+Desplegar el archivo WAR en Wildfly:
+
+Copia el archivo WAR generado al directorio de despliegue de Wildfly, generalmente ubicado en wildfly/standalone/deployments.
+Inicia o reinicia el servidor Wildfly para desplegar la aplicación.
+Estos pasos te permitirán exportar tu proyecto Spring Boot como un archivo WAR y desplegarlo en un servidor Wildfly.
