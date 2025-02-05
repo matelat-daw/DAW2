@@ -143,7 +143,7 @@ function ejercicio02_4(arrayRecetas, tipoCocina) {
 }
 
 // Ejercicio 02-5: Lista <ul> con recetas destacadas por tipo de cocina
-function ejercicio02_5(arrayRecetas, tipoCocina) {
+function ejercicio02_5(recetas, tipoCocina) {
     const ul = document.createElement('ul');
     arrayRecetas
         .filter(receta => receta.tipoCocina === tipoCocina && receta.puntuacion > 4.5)
@@ -158,49 +158,62 @@ function ejercicio02_5(arrayRecetas, tipoCocina) {
 
 // UT03
 
-// Ejercicio 03-1: Mostrar información de la receta en un elementoDiv
-function ejercicio03_1(arrayRecetas, id) {
-    const receta = arrayRecetas.find(rec => rec.id === id); // Buscar receta por id
-    if (!receta) {
-        console.error("Receta no encontrada");
-        return;
-    }
-    
-    const elementoDiv = document.getElementById('elementoDiv'); // ID del contenedor
-    if (!elementoDiv) {
-        console.error("El elemento con id 'elementoDiv' no existe en el DOM.");
-        return;
-    }
-    
-    elementoDiv.innerHTML = `
-        <h3>${receta.nombre} (${receta.id})</h3>
-        <details>
-            <summary>Etiquetas (${receta.etiquetas.length})</summary>
-            <ul>
-                ${receta.etiquetas.map(etiqueta => `<li>${etiqueta}</li>`).join("")}
-            </ul>
-        </details>
-        <details>
-            <summary>Ingredientes (${receta.ingredientes.length})</summary>
-            <ul>
-                ${receta.ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).join("")}
-            </ul>
-        </details>
-        <details>
-            <summary>Instrucciones (${receta.instrucciones.length})</summary>
-            <ol>
-                ${receta.instrucciones.map(instruccion => `<li>${instruccion}</li>`).join("")}
-            </ol>
-        </details>
-    `;
+function ejercicio03_1(div, id)
+{
+    const elementoDiv = document.getElementById(div); // ID del contenedor
+    let receta = recetas.find(receta => receta.id == id);
+    let details, details2, details3, summary, summary2, summary3, list, list2, list3, li, h3;
+
+    h3 = document.createElement("h3");
+
+    h3.textContent = `${receta.nombre} (${receta.id})`;
+    elementoDiv.appendChild(h3);
+    details = document.createElement("details");
+    details2 = document.createElement("details");
+    details3 = document.createElement("details");
+    summary = document.createElement("summary");
+    list = document.createElement("ul");
+    list2 = document.createElement("ul");
+    list3 = document.createElement("ul");
+    summary.textContent = "Etiqueta (" + receta.etiquetas.length + ")";
+    details.appendChild(summary);
+    summary2 = document.createElement("summary");
+    summary2.textContent = "Ingredientes (" + receta.ingredientes.length + ")";
+    details2.appendChild(summary2);
+    summary3 = document.createElement("summary");
+    summary3.textContent = "Instrucciones (" + receta.instrucciones.length + ")";
+    details3.appendChild(summary3);
+    details.appendChild(list);
+    details2.appendChild(list2);
+    details3.appendChild(list3);
+    elementoDiv.appendChild(details);
+    elementoDiv.appendChild(details2);
+    elementoDiv.appendChild(details3);
+
+    receta.etiquetas.forEach(etiqueta => {
+        li = document.createElement("li");
+        li.textContent = `${etiqueta}`;
+        list.appendChild(li);
+    });
+
+    receta.ingredientes.forEach(ingrediente => {
+        li = document.createElement("li");
+        li.textContent = `${ingrediente}`;
+        list2.appendChild(li);
+    });
+
+    receta.instrucciones.forEach(instruccion => {
+        li = document.createElement("li");
+        li.textContent = `${instruccion}`;
+        list3.appendChild(li);
+    });
 }
 
 
-
 // Ejercicio 03-2: Mostrar información agrupada por tipo de cocina
-function ejercicio03_2(arrayRecetas, ...tiposCocina) {
+function ejercicio03_2(div, ...tiposCocina) {
     // Seleccionamos el contenedor donde se mostrará la información
-    const contenedor = document.getElementById("output");
+    const contenedor = document.getElementById(div);
    
 
     // Limpiamos el contenido previo del contenedor
@@ -209,7 +222,7 @@ function ejercicio03_2(arrayRecetas, ...tiposCocina) {
     // Iteramos sobre los tipos de cocina solicitados
     tiposCocina.forEach(tipo => {
         // Filtramos las recetas por el tipo de cocina actual
-        const recetasPorTipo = arrayRecetas.filter(rec => rec.tipoCocina === tipo);
+        const recetasPorTipo = recetas.filter(rec => rec.tipoCocina === tipo);
 
         if (recetasPorTipo.length > 0) {
             // Creamos un elemento <details> para este tipo de cocina
@@ -255,4 +268,42 @@ function ejercicio03_2(arrayRecetas, ...tiposCocina) {
             console.warn(`No se encontraron recetas para el tipo de cocina: ${tipo}`);
         }
     });
+}
+
+// Ejercicio 03-3: Mostrar información de la receta en un elementoDiv
+
+function ejercicio03_3(div, id) {
+    const receta = recetas.find(rec => rec.id === id); // Buscar receta por id
+    if (!receta) {
+        console.error("Receta no encontrada");
+        return;
+    }
+    
+    const elementoDiv = document.getElementById(div); // ID del contenedor
+    if (!elementoDiv) {
+        console.error("El elemento con id 'elementoDiv' no existe en el DOM.");
+        return;
+    }
+    
+    elementoDiv.innerHTML = `
+        <h3>${receta.nombre} (${receta.id})</h3>
+        <details>
+            <summary>Etiquetas (${receta.etiquetas.length})</summary>
+            <ul>
+                ${receta.etiquetas.map(etiqueta => `<li>${etiqueta}</li>`).join("")}
+            </ul>
+        </details>
+        <details>
+            <summary>Ingredientes (${receta.ingredientes.length})</summary>
+            <ul>
+                ${receta.ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).join("")}
+            </ul>
+        </details>
+        <details>
+            <summary>Instrucciones (${receta.instrucciones.length})</summary>
+            <ol>
+                ${receta.instrucciones.map(instruccion => `<li>${instruccion}</li>`).join("")}
+            </ol>
+        </details>
+    `;
 }
