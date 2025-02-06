@@ -1,0 +1,28 @@
+services:
+  wildfly:
+    image: jboss/wildfly:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./tomcat/tomcat.war:/opt/jboss/wildfly/standalone/deployments/tomcat.war
+      - ./animals/animals.war:/opt/jboss/wildfly/standalone/deployments/animals.war
+
+  tomcat:
+    image: tomcat:9.0
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./tomcat/tomcat.war:/usr/local/tomcat/webapps/tomcat.war
+      - ./animals/animals.war:/usr/local/tomcat/webapps/animals.war
+
+  app1:
+    build: ./tomcat
+    container_name: tomcat
+    depends_on:
+      - wildfly
+
+  app2:
+    build: ./animals
+    container_name: animals
+    depends_on:
+      - wildfly
