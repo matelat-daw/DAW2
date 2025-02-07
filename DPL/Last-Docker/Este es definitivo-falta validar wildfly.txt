@@ -1,0 +1,49 @@
+Compose de Docker para desplegar Tomcat y Wildfly:
+
+services:
+  tomcat:
+    image: tomcat:latest
+    container_name: tomcat
+    ports:
+      - "8009:8009"
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - ./tomcat2.war:/usr/local/tomcat/webapps/tomcat2.war
+    networks:
+      - server
+  wildfly:
+    image: jboss/wildfly:latest
+    container_name: wildfly
+    ports:
+      - "8010:8009"
+      - "8081:8080"
+      - "8444:8443"
+      - "9990:9990"
+    volumes:
+      - ./animals.war:/opt/jboss/wildfly/standalone/deployments/animals.war
+    environment:
+      - JAVA_OPTS=-Djava.net.preferIPv4Stack=true
+    restart: always
+    command: >
+         bash -c "/opt/jboss/wildfly/bin/add-user.sh admin Admin#007 --silent
+         && /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0"
+    networks:
+      - server
+networks:
+  server:
+    driver: bridge
+	
+	
+Al final crea un usuario admin en wildfly con la contraseña Admin#007 (My name is Bond James Bond).
+	
+	
+Para entrar en un conteneder, wildfly por ejemplo:
+
+docker exec -it wildfly /bin/bash
+
+
+Para copiar un contenedor al servidor y editar los ficheros de configuración.
+
+docker cp /ruta/local/archivo <container_id>:/ruta/del/archivo
+docker run -v /ruta/local:/ruta/en/contenedor -it <image> /bin/bash
