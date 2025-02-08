@@ -8,8 +8,11 @@ const Read = () => {
     const navegar = useNavigate();
     const [recetas, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const { id } = useParams();
 
-  useEffect(() => {
+useEffect(() => {
+  if (id)
+  {
     setIsLoading(true);
     const fetchItems = async () => {
       const recetas = await getRecetas();
@@ -17,7 +20,12 @@ const Read = () => {
       setItems(recetas);
     };
     fetchItems();
-  }, []);
+  }
+  else
+  {
+
+  }
+  }, [id]);
 
   if (isLoading) {
     return <div><h2>Cargando...</h2><img src={logo} alt='Rueda Cargando'></img></div>;
