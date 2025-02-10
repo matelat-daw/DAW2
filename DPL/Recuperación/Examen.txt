@@ -1,0 +1,227 @@
+Antés de Empezar con las zonas hay que editar el fichero named.conf.options:
+
+Poner la Dirección de los forwarders (Servidores DNS):
+
+forwarders{
+	172.30.19.11;
+	172.30.19.13;
+}
+
+
+
+Activación del Firewall de Ubuntu Server(ufw):
+
+ufw enable
+
+ufw allow 80/tcp
+
+ufw allow 443/tcp
+
+
+
+Creación de Usuarios (Crea sus directorios /home):
+
+sudo adduser poke19
+
+sudo adduser mon19
+
+
+Hay que Crear los Directorios en /var/www:
+
+sudo mkdir /var/www/poke19
+
+sudo mkdir /var/www/mon19
+
+sudo chown -R 755 poke19:poke19 /var/www/poke19
+
+sudo chown -R 755 mon19:mon19 /var/www/mon19
+
+
+Cearción de .htaccess en /home:
+
+cd /home:
+
+sudo nano .htaccess:
+
+AuthUserFile /home/.htpasswd 
+AuthName "mon19.recu" 
+AuthType Basic 
+Limit GET POST> 
+	require valid-user 
+</Limit>
+
+sudo htpasswd .htpasswd mon19:
+
+Pide la contraseña,
+Repetir la contraseña.
+
+
+Crear los directorios para el FTP:
+
+sudo mkdir /home/vftp
+
+sudo mkdir /home/vftp/poke19
+
+sudo mkdir /home/vftp/mon19
+
+sudo chown -R poke19 /home/vftp/poke19
+
+sudo chown -R mon19 /home/vftp/mon19
+
+
+Configuración DNS, Zonas:
+
+zone "poke19.recu" { 
+	type master; 
+	file "/etc/bind/db.poke19"; 
+	allow-transfer (172.30.19.13;};
+};
+	
+zone "mon19.recu" { 
+	type master; 
+	file "/etc/bind/db.mon19"; 
+	allow-transfer (172.30.19.13;}; 
+};
+
+zone "cesar19.recupero" { 
+	type slave; 
+	file "/etc/cache/bind/db.cesar19"; 
+	masters {172.30.19.13;};
+};
+
+Configuaración DNS zona Inversa:
+
+zone "19.30.172.in-addr.arpa"
+{
+	type master;
+	file "etc/bind/db.19.30.172";
+	allow-transfer{172.30.19.13;};
+};
+
+Configuaración DNS (db.poke19):
+
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     poke19.recu. root.localhost. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      slin1
+@       IN      NS      slin2
+@       IN      NS      swin
+
+slin1	IN		A		172.30.19.11
+slin2	IN		A		172.30.19.12
+swin	IN		A		172.30.19.13
+
+www     IN      CNAME   slin1
+ftp     IN      CNAME   slin1
+
+ftpmon	IN		CNAME	slin2
+www		IN		CNAME	slin2
+wordpress	IN		CNAME	slin2
+
+www		IN		CNAME	swin
+
+
+Configuración Zona Inversa:
+
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     poke19.com. root.localhost. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      slin1
+11      IN      PTR     slin1
+12      IN      PTR     slin2
+13      IN      PTR     swin
+
+
+Configuración Servidor Apache2 (poke19.conf):
+
+cd /etc/apache2/sites-available:
+
+sudo nano poke19.conf:
+
+<VirtualHost *:443> 
+	ServerAdmin cesarmatelat@gmail.com 
+	ServerName poke19.recu
+	ServerAlias www.poke19.recu
+	DocumentRoot /var/www/poke19
+	SSLEngine on 
+	SSLCertificateFile /etc/ssl/certs/poke19.crt 
+	SSLCertificateKeyFile /etc/ssl/private/poke19.key 
+	ErrorLog ${APACHE_LOG_DIR}/error.log 
+	CustomLog ${APACHE_LOG_DIR}/access.log combined 
+	<Directory /var/www/poke19> 
+		AllowOverride All 
+		Require all granted 
+	</Directory> 
+</VirtualHost>
+
+
+Hay que activar el sitio:
+
+sudo a2ensite poke19.conf
+
+sudo a2dissite 000-default.conf # Para http
+sudo a2dissite default-ssl.conf # Para https
+
+
+Configuración Servidor Nginx (wordpress poke19):
+
+Configuración Servidor Nginx (mon19.conf):
+
+cd /etc/nginx/sites-available:
+
+sudo nano mon19.conf:
+
+server {
+	listen 80;
+	listen 443 ssl;
+	
+	ssl on;
+	ssl_certificate /etc/ssl/certs/mon19.crt;
+	ssl_trusted_certificate /etc/ssl/certs/mon19.crt;
+	ssl_certificate_key /etc/ssl/private/mon19.key;
+	
+	root /var/www/mon19;
+	index index.html index.htm index.php;
+	
+	server_name mon19.recu www.mon19.recu wordpress.mon19.recu;
+
+	location / {
+		try_files $uri $uri/ =404;
+}
+
+Hay que activar el sitio:
+
+cd /etc/nginx/sites-enabled:
+
+ln -s /etc/nginx/sites-available/mon19.conf ./mon19.conf
+
+
+Varios:
+
+sudo systemctl restart bind9
+
+sudo systemctl restart apache2
+
+sudo systemctl restart nginx
+
+sudo systemctl status bind9
+
+sudo systemctl status apache2
+
+sudo systemctl status nginx
