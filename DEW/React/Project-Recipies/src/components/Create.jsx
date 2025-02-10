@@ -38,13 +38,19 @@ useEffect(() => {
 
   return (
     <div>
-      <h2>Receta Nueva Item</h2>
+      <h2>Añadir/Modificar Receta</h2>
       <form onSubmit={handleSubmit} enctype="multipart/form-data">
-        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Nombre" required />
+        <label htmlFor='name' className='left'>Nombre:</label>
+        <br />
+        <input id='name' type="text" name="name" className='left' value={formData.name} onChange={handleChange} placeholder="Nombre" required />
         <br /><br />
-        <input type="text" name="cuisine" value={formData.cuisine} onChange={handleChange} placeholder="Tipo de Cocina" required />
+        <label htmlFor='kind' className='left'>Tipo de Cocina:</label>
+        <br />
+        <input id='kind' type="text" name="cuisine" className='left' value={formData.cuisine} onChange={handleChange} placeholder="Tipo de Cocina" required />
         <br /><br />
-        <input type="file" name="image" onChange={handleChange} placeholder="Imagen" required />
+        <label htmlFor='img' className='left'>Imagen</label>
+        <br />
+        <input id='img' type="file" name="image" className='left' onChange={handleChange} placeholder="Imagen" required />
         <br /><br />
         <button type="submit" className='btn btn-success'>Agregar Receta</button>
       </form>

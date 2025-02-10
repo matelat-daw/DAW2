@@ -27,6 +27,9 @@ useEffect(() => {
   return (
     <div>
       <h2>Lista de Recetas</h2>
+      <br />
+      <button onClick={ (e) => navegar('/create')} className='btn btn-success left'>Añadir Receta</button>
+      <br /><br />
       <table>
         <thead>
             <tr><th>ID</th><th>Nombre</th><th>Tipo de Cocina</th><th>Imagen</th><th>Acciones</th></tr>
@@ -37,8 +40,6 @@ useEffect(() => {
                 ))}
         </tbody>
       </table>
-      <br />
-      <button onClick={ (e) => navegar('/create')} className='btn btn-success'>Añadir Receta</button>
     </div>
   );
 };
