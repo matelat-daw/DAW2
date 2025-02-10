@@ -33,7 +33,7 @@ useEffect(() => {
         </thead>
         <tbody>
                 {recetas.map((receta) => (
-                    <tr key={receta.id}><td>{receta.id}</td><td>{receta.name}</td><td>{receta.cuisine}</td><td>{receta.image}</td><td><button onClick={ (e) => navegar(`/details/${receta.id}`)} className='btn btn-primary'>Detalles</button>&nbsp;&nbsp;<button onClick={ (e) => navegar(`/create/${receta.id}`)} className='btn btn-info'>Actualizar</button>&nbsp;&nbsp;<button onClick={(e)=> navegar(`/delete/${receta.id}`)} className='btn btn-danger'>Eliminar</button></td></tr>
+                    <tr key={receta.id}><td>{receta.id}</td><td>{receta.name}</td><td>{receta.cuisine}</td><td><a target='_blank' href={receta.image}>Ver Imagen</a></td><td><button onClick={ (e) => navegar(`/details/${receta.id}`)} className='btn btn-primary'>Detalles</button>&nbsp;&nbsp;<button onClick={ (e) => navegar(`/create/${receta.id}`)} className='btn btn-info'>Actualizar</button>&nbsp;&nbsp;<button onClick={(e)=> navegar(`/delete/${receta.id}`)} className='btn btn-danger'>Eliminar</button></td></tr>
                 ))}
         </tbody>
       </table>
