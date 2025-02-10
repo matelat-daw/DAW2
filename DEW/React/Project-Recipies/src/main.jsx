@@ -5,6 +5,7 @@ import Inicio from './Inicio';
 import Layout from './Layout';
 import Create from './components/Create';
 import Read from './components/Read';
+import Details from './components/Details';
 import Delete from './components/Delete';
 
 createRoot(document.getElementById('root')).render(
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')).render(
                 <Route index element={<Inicio />}></Route>
                 <Route path="/create" element={<Create />} />
                 <Route path="/read" element={<Read />} />
+                <Route path="/details/:id" element={<Details />} />
                 <Route path="/create/:id" element={<Create />} />
                 <Route path="/delete/:id" element={<Delete />} />
                 <Route path="*" element={<Navigate to="/" replace="true"/>}></Route>

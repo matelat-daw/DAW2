@@ -46,10 +46,10 @@ export const getRecetas = async () => {
     }
   };
 
-  export const getRecipie = async (id) => {
-    try {
-      return recetas.find(receta => receta.id === parseInt(id)).filter(receta => receta.ingridients);
-    } catch (error) {
-      console.error('Error Obteniendo los Ingredientes: ', error);
-    }
-  }
+//   export const getRecipie = async (id) => {
+//     try {
+//       return recetas.find(receta => receta.id === parseInt(id)).filter(receta => receta.ingridients);
+//     } catch (error) {
+//       console.error('Error Obteniendo los Ingredientes: ', error);
+//     }
+//   }
