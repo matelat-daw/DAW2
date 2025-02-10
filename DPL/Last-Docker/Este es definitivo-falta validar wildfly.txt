@@ -5,23 +5,20 @@ services:
     image: tomcat:latest
     container_name: tomcat
     ports:
-      - "8009:8009"
       - "8080:8080"
-      - "8443:8443"
     volumes:
-      - ./tomcat2.war:/usr/local/tomcat/webapps/tomcat2.war
+      - ./tomcat.war:/usr/local/tomcat/webapps/ROOT.war # tomcat.war es el index.html que pone que Tomcat esta aislado y tiene el enlace a Wildfly (puerto 8081)
     networks:
       - server
   wildfly:
     image: jboss/wildfly:latest
     container_name: wildfly
     ports:
-      - "8010:8009"
       - "8081:8080"
       - "8444:8443"
       - "9990:9990"
     volumes:
-      - ./animals.war:/opt/jboss/wildfly/standalone/deployments/animals.war
+      - ./animals.war:/opt/jboss/wildfly/standalone/deployments/ROOT.war					# animals.war es el war modificado hay que quitar las libraries que dan error en Wildfly, se agrega como ROOT.war.
     environment:
       - JAVA_OPTS=-Djava.net.preferIPv4Stack=true
     restart: always
@@ -38,9 +35,9 @@ networks:
 Al final crea un usuario admin en wildfly con la contraseña Admin#007 (My name is Bond James Bond).
 	
 	
-Para entrar en un conteneder, wildfly por ejemplo:
+Para entrar en un contenedor, wildfly por ejemplo:
 
-docker exec -it wildfly /bin/bash
+docker exec -it wildfly bash
 
 
 Para copiar un contenedor al servidor y editar los ficheros de configuración.
