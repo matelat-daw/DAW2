@@ -32,9 +32,9 @@ sudo mkdir /var/www/poke19
 
 sudo mkdir /var/www/mon19
 
-sudo chown -R 755 poke19:poke19 /var/www/poke19
+sudo chown -R poke19:poke19 /var/www/poke19
 
-sudo chown -R 755 mon19:mon19 /var/www/mon19
+sudo chown -R mon19:mon19 /var/www/mon19
 
 
 Cearción de .htaccess en /home:
@@ -44,7 +44,7 @@ cd /home:
 sudo nano .htaccess:
 
 AuthUserFile /home/.htpasswd 
-AuthName "mon19.recu" 
+AuthName "mon19" 
 AuthType Basic 
 Limit GET POST> 
 	require valid-user 
@@ -135,7 +135,7 @@ Configuración Zona Inversa:
 ; BIND reverse data file for local loopback interface
 ;
 $TTL    604800
-@       IN      SOA     poke19.com. root.localhost. (
+@       IN      SOA     poke19.recu. root.localhost. (
                               1         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
@@ -143,9 +143,14 @@ $TTL    604800
                          604800 )       ; Negative Cache TTL
 ;
 @       IN      NS      slin1
+@		IN		NS		slin2
+@		IN		NS		swin
+@		IN		NS		Ubuntu-Host-100
+
 11      IN      PTR     slin1
 12      IN      PTR     slin2
 13      IN      PTR     swin
+100		IN		PTR		Ubuntu-Host-100
 
 
 Configuración Servidor Apache2 (poke19.conf):
