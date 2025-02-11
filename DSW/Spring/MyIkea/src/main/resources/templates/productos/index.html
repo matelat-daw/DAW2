@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head::head}"><title></title></head>
-    <header th:replace="~{fragments/header:: header}"></header>
+<head th:replace="~{../fragments/head::head}"><title></title></head>
+<br><br><br>
+    <nav th:replace="~{fragments/nav:: nav}"></nav>
 
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -34,5 +35,4 @@
             </div>
         </div>
     </div>
-<br><br>
-<footer th:replace="~{fragments/footer::footer}"></footer>
+<footer th:replace="~{../fragments/footer::footer}"></footer>

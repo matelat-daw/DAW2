@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .quantity-input {
+      width: 60px;
+      text-align: center;
+    }
+    
+    button{
+      color: red;
+      text-decoration: none;
+      background-color: transparent;
+      border: none;
+    }
+    button:hover{
+      color: darkred;
+      cursor: pointer;
+    }
+    
+  </style>
+<link rel="stylesheet" type="text/css" href="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.css"/><script  type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cauce_cookie.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-base.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-evagd.js"></script><link rel="stylesheet" type="text/css" href="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.css"/><script  type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cauce_cookie.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-base.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-evagd.js"></script></head>
+<body>
+  <h1>Carrito de la compra</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Importe</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="cart-items">
+      <tr data-id="1">
+        <td>Producto barato</td>
+        <td>$10.00</td>
+        <td><input type="number" class="quantity-input" value="1" min="1"></td>
+        <td class="item-total">$10.00</td>
+        <td><button onclick="autoremove(tr1)">Remove</button></td>
+      </tr>
+      <tr data-id="2">
+        <td>Producto caro</td>
+        <td>$20.00</td>
+        <td><input type="number" class="quantity-input" value="2" min="1"></td>
+        <td class="item-total">$40.00</td>
+        <td><button onclick="autoremove(tr2)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Total:</strong> <span id="cart-total">$50.00</span></p>
+
+  <script>
+    const tr1 = document.querySelector('tr[data-id="1"]');
+    const tr2 = document.querySelector('tr[data-id="2"]');
+    function updateCartTotal() {
+      const rows = document.querySelectorAll('#cart-items tr');
+      let total = 0;
+
+      rows.forEach(row => {
+        const price = parseFloat(row.querySelector('td:nth-child(2)').textContent.replace('$', ''));
+        const quantity = parseInt(row.querySelector('.quantity-input').value);
+        const itemTotal = price * quantity;
+
+        row.querySelector('.item-total').textContent = `$${itemTotal.toFixed(2)}`;
+        total += itemTotal;
+      });
+
+      document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+    }
+
+    document.getElementById('cart-items').addEventListener('input', event => {
+      if (event.target.classList.contains('quantity-input')) {
+        updateCartTotal();
+      }
+    });
+    function autoremove(element){
+        element.remove()
+        updateCartTotal();
+    }
+
+    tr1.children[2].children[0].addEventListener('change', function(){
+        if(tr1.children[2].children[0].value == 0){
+            autoremove(tr1);
+        }
+    });
+
+    tr2.children[2].children[0].addEventListener('change', function(){
+        if(tr2.children[2].children[0].value == 0){
+            autoremove(tr2);
+        }
+    });
+  </script>
+</body>
+</html>

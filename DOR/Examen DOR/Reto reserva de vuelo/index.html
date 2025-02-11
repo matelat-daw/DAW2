@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu vuelo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .disabled {
+            color: #999;
+        }
+
+        .error{
+            color: red;
+            margin: 0;
+            font-size: small;
+        }
+        button[type = "submit"]{
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reserve su vuelo</h1>
+    <form id="flight-form">
+        <label for="airport">Aeropuerto de salida:</label>
+        <select id="airport" required>
+            <option value="" disabled selected>Seleccione un aeropuerto</option>
+            <option value="narnia">Narnia</option>
+            <option value="pueblo-paleta">Pueblo Paleta</option>
+            <option value="san-andreas">San Andreas</option>
+        </select>
+
+        <label for="destination">Destino:</label>
+        <select id="destination" required>
+            <option value="" disabled selected>Seleccione un destino</option>
+            <option value="anvil">Anvil</option>
+            <option value="ciudad-asuka" >Ciudad Asuka</option>
+            <option value="hogwartz" >Hogwartz</option>
+            <option value="mordor" >Mordor</option>
+            <option value="oasis-springs" >Oasis Springs</option>
+            <option value="pueblo-paleta" >Pueblo Paleta</option>
+            <option value="racoon-city" >Racoon City</option>
+            <option value="san-andreas" >San Andreas</option>
+            <option value="vice-city" >Vice City</option>
+        </select>
+
+        <label for="departure-date">Fecha de salida:</label>
+        <input type="date" id="departure-date" required>
+
+        <label for="return-date">Fecha de regreso:</label>
+        <input type="date" id="return-date" required>
+        <p id="error-message" class="error"></p>
+
+        <button type="submit">¡Reserva tu vuelo!</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("flight-form");
+        const airportSelect = document.getElementById("airport");
+        const destinationSelect = document.getElementById("destination");
+        const departureDateInput = document.getElementById("departure-date");
+        const returnDateInput = document.getElementById("return-date");
+        const errorMessage = document.getElementById("error-message");
+        
+
+        // Guardo los options de los destinos
+        let destinos = [...destinationSelect.children];
+
+        window.onload = () =>{
+            // Desactivamos todos los destinos
+            destinos.forEach(destino => {
+                destino.setAttribute("disabled", "")
+            });
+        }
+
+        const destinations = {
+            "narnia": ["hogwartz", "pueblo-paleta", "san-andreas", "racoon-city"],
+            "pueblo-paleta": ["san-andreas", "mordor", "narnia", "anvil", "oasis-springs"],
+            "san-andreas": ["vice-city", "pueblo-paleta", "narnia", "racoon-city", "ciudad-asuka"]
+        };
+
+        // Listener para habilitar los destinos disponibles
+        airportSelect.addEventListener("change", () =>{
+            destinos.forEach(destino => {
+                destino.setAttribute("disabled", "")
+            });
+
+            let aeropuerto = airportSelect.value;
+            let destinosDisponibles = destinations[aeropuerto]
+            
+            destinos
+            .filter(destino => destinosDisponibles.includes(destino.value))
+            .forEach(destino => destino.removeAttribute("disabled"));
+        })
+
+        // Listeners para controlar errores en el submit
+        form.addEventListener("submit", (e) => {
+            errorMessage.innerHTML = "";
+            
+            let fechaSalida = departureDateInput.value;
+            let fechaRegreso = returnDateInput.value;
+
+            if (fechaSalida > fechaRegreso) {
+                e.preventDefault();
+                errorMessage.innerHTML = "La fecha de regreso no puede ser anterior a la fecha de salida.";
+            }
+        });
+    </script>
+</body>
+</html>
