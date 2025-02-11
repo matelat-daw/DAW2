@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de validación de contraseña</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+
+      span
+      {
+        font-size: small;
+        color: salmon;
+      }
+      .progress-bar {
+      display: flex;
+      margin-top: 10px;
+    }
+    .progress-bar div {
+      flex: 1;
+      height: 20px;
+      margin-right: 2px;
+      background-color: lightgray;
+    }
+    .progress-bar div.filled {
+      background-color: red;
+    }
+    .progress-bar div.filled-3-4 {
+      background-color: yellow;
+    }
+    .progress-bar div.filled-5 {
+      background-color: green;
+    }
+    }
+
+  </style>
+<link rel="stylesheet" type="text/css" href="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.css"/><script  type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cauce_cookie.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-base.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-evagd.js"></script></head>
+<body>
+  <h1>Registro</h1>
+  <form id="registration-form">
+    <label for="password">Contraseña:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <span id="num">Debe Contener al menos un Número</span><br>
+    <span id="min">Debe Contener al menos una minúscula</span><br>
+    <span id="may">Debe Contener al menos una Mayuscula</span><br>
+    <span id="sym">Debe Contener al menos un Simbolo</span><br>
+    <span id="len">Debe tener al menos 8 caracteres</span><br>
+    <br>
+    <div class="progress-bar">
+      <div id="progress1"></div>
+      <div id="progress2"></div>
+      <div id="progress3"></div>
+      <div id="progress4"></div>
+      <div id="progress5"></div>
+    </div>
+
+    <br>
+    <button type="submit"  id="submit-button">Registro</button>
+  </form>
+
+  <script>
+    const pass = document.getElementById("password");
+    const num = document.getElementById("num");
+    const min = document.getElementById("min");
+    const may = document.getElementById("may");
+    const sym = document.getElementById("sym");
+    const form = document.getElementById("registration-form");
+    const progressBar = [
+      document.getElementById("progress1"),
+      document.getElementById("progress2"),
+      document.getElementById("progress3"),
+      document.getElementById("progress4"),
+      document.getElementById("progress5")
+    ];
+
+    pass.addEventListener("input", () => {
+      const value = pass.value;
+      const hasNumber = /\d/.test(value);
+      const hasLowerCase = /[a-z]/.test(value);
+      const hasUpperCase = /[A-Z]/.test(value);
+      const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+      const hasMinLength = value.length >= 8;
+
+      num.style.visibility = hasNumber ? "hidden" : "visible";
+      min.style.visibility = hasLowerCase ? "hidden" : "visible";
+      may.style.visibility = hasUpperCase ? "hidden" : "visible";
+      sym.style.visibility = hasSymbol ? "hidden" : "visible";
+      len.style.visibility = hasMinLength ? "hidden" : "visible";
+
+      const conditionsMet = [hasNumber, hasLowerCase, hasUpperCase, hasSymbol, hasMinLength].filter(Boolean).length;
+
+      progressBar.forEach((cell, index) => {
+        cell.className = '';
+        if (index < conditionsMet) {
+          if (conditionsMet <= 2) {
+            cell.classList.add('filled');
+          } else if (conditionsMet <= 4) {
+            cell.classList.add('filled-3-4');
+          } else {
+            cell.classList.add('filled-5');
+          }
+        }
+      });
+    });
+
+    form.addEventListener("submit", (event) => {
+      const value = pass.value;
+      const hasMinLength = value.length >= 8;
+
+      if (!hasMinLength) {
+        event.preventDefault();
+        alert("La contraseña debe tener al menos 8 caracteres.");
+      }
+      else
+      {
+        alert("La contraseña Es Válida se ha enviado correctamente. Gracias.");
+      }
+    });
+  </script>
+</body>
+</html>

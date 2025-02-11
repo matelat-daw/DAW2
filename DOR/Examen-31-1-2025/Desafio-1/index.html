@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegación en varios pasos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            width: 33%;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .navigation-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navigation-links button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navigation-links button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn
+        {
+            width: 5em;
+            height: 3.5em;
+            color: white;
+            background-color: blue;
+        }
+
+        .btn:hover
+        {
+            cursor: pointer;
+        }
+
+        .btn:active
+        {
+            border: 2px solid green;
+        }
+
+        .btn:disabled
+        {
+            background-color: bisque;
+        }
+    </style>
+<link rel="stylesheet" type="text/css" href="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.css"/><script  type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cauce_cookie.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-base.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-evagd.js"></script></head>
+
+<body>
+    <h1>Navegación en varios pasos</h1>
+    <header>
+        <div>
+            <button class="btn active2" id="btn1">Paso 1</button>&nbsp;&nbsp;&nbsp;
+            <button class="btn" id="btn2" disabled>Paso 2</button>&nbsp;&nbsp;&nbsp;
+            <button class="btn" id="btn3" disabled>Paso 3</button>&nbsp;&nbsp;&nbsp;
+            <button class="btn" id="btn4" disabled>Paso 4</button>
+        </div>
+    </header>
+    <div id="stepsContainer">
+        <div class="step active" data-step="1">
+            <h2>Paso 1</h2>
+            <p>Este es el primer paso del proceso que estás a punto de iniciar, y sirve como paso preparatorio.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget risus sed sem sollicitudin
+                porttitor. Ut elit ipsum, cursus vitae condimentum sed, egestas in dui. Mauris ornare justo et libero
+                faucibus laoreet. Morbi auctor nisl a lectus egestas, at tincidunt orci sodales. Aenean dapibus mauris
+                quis volutpat tristique. Maecenas id dignissim lacus. Nullam quis orci nulla.
+
+            </p>
+        </div>
+        <div class="step" data-step="2">
+            <h2>Paso 2</h2>
+            <p>Aquí se suele ampliar la información del paso 1 o bien contener el elemento central de la tarea.</p>
+            <p>Phasellus id sem a eros pellentesque suscipit. Fusce dictum neque vel arcu tempor, sed porta erat
+                ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis massa ac nisi
+                luctus convallis. Nullam ac est eu est faucibus consectetur. Nulla facilisi. Duis dictum vestibulum
+                nulla, et ornare felis varius at. Nulla auctor sollicitudin commodo. Praesent feugiat velit eget mollis
+                placerat. Vestibulum nisl felis, finibus non congue id, pulvinar eu neque. Duis accumsan bibendum ante
+                sed convallis. Phasellus lobortis massa vestibulum, elementum eros at, ultricies nulla. Sed id iaculis
+                lectus. Proin vel tortor interdum, posuere est non, commodo magna. Curabitur lorem nisl, blandit id
+                facilisis sed, mollis sit amet ipsum.</p>
+        </div>
+        <div class="step" data-step="3">
+            <h2>Paso 3</h2>
+            <p>Si el paso 2 complementa al paso 1, este paso contendrá la parte más importante de la tarea. En caso
+                contrario, este paso contendrá elementos adicionales de apoyo al paso 2</p>
+            <p>Donec finibus molestie arcu sit amet elementum. Aenean arcu orci, cursus sit amet tristique tincidunt,
+                tristique in lacus. Nam vel nulla mattis, finibus libero a, egestas magna. Praesent fermentum ut nibh
+                vel malesuada. Maecenas tempus sollicitudin tempus. Etiam tempor massa sit amet ante convallis euismod.
+                Integer non ante ut lacus pretium varius id non neque. Nulla ultrices nibh molestie, interdum nisl
+                vitae, sagittis justo. Sed egestas tellus a erat rutrum porta.
+
+            </p>
+        </div>
+        <div class="step" data-step="4">
+            <h2>Paso 4</h2>
+            <p>Un buen diseño en varios pasos reserva el último paso para mostrar un resumen de comprobación antes de
+                finalizar el proceso.</p>
+            <p>Cras et magna nec risus sagittis fringilla. Class aptent taciti sociosqu ad litora torquent per conubia
+                nostra, per inceptos himenaeos. Nulla blandit sed lorem ac faucibus. Curabitur nec vestibulum augue.
+                Nullam quis diam sit amet mauris vestibulum luctus. Maecenas sed leo vitae nisl ultrices vestibulum eget
+                sit amet ligula. Fusce sed dolor eu augue mattis malesuada.
+
+            </p>
+        </div>
+    </div>
+
+    <div class="navigation-links">
+        <button id="prevButton" disabled>Previous</button>
+        <button id="nextButton">Next</button>
+    </div>
+
+    <script>
+        const steps = document.querySelectorAll('.step');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const button1 = document.getElementById("btn1");
+        const button2 = document.getElementById("btn2");
+        const button3 = document.getElementById("btn3");
+        const button4 = document.getElementById("btn4");
+        let currentStep = 1;
+
+        function updateSteps() {
+            steps.forEach(step => {
+                /* Marca el atributo 'active' como TRUE o FALSE 
+                para cada elemento de clase 'step' 
+                según si es el paso actual o no */
+                step.classList.toggle('active', parseInt(step.dataset.step) === currentStep);
+            });
+
+            switch(currentStep)
+            {
+                case 1:
+                    button2.disabled;
+                    break;
+                case 2:
+                    button2.disabled = false;
+                    break;
+                case 3:
+                    button3.disabled = false;
+                    break;
+                default:
+                    button4.disabled = false;
+                    break;
+            }
+
+            prevButton.disabled = currentStep === 1; // Anula el botón de retroceso si estamos en el paso 1
+            nextButton.disabled = currentStep === steps.length; // Anula el botón de retroceso si estamos en el último paso
+        }
+
+
+
+        prevButton.addEventListener('click', () => {
+            /* Decrementa el contador del paso actual */
+
+            if (currentStep > 1) {
+                currentStep--;
+                updateSteps();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            /* Incrementa el contador del paso actual */
+            if (currentStep < steps.length) {
+                currentStep++;
+                updateSteps();
+            }
+        });
+
+        updateSteps(); // Ejecuta  'updateSteps() al cargar la página' para actualizar el estado de cada elemento
+    </script>
+</body>
+
+</html>
