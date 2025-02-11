@@ -31,7 +31,7 @@ const Details = () => {
     return (
         <div>
             <h1>Ingredientes de: {receta}</h1>
-            <ul>
+            <ul className='none'>
                 {ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                 ))}

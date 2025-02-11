@@ -5,7 +5,7 @@ let recetas = [];
 // Obtener Todas las Recetas.
 export const getRecetas = async () => {
     try {
-        return recetas = await fetch("http://localhost:3000/recetas").then(respuesta => respuesta.json())
+        return await fetch("http://localhost:3000/recetas").then(respuesta => respuesta.json())
         .catch(respuesta => toast(2, "Error de Conexión", "Lo Siento No hay Conexión con el Servidor. Asegurate de que el Servidor está en Ejecución. Error: " + respuesta))
         // .then(jsonData => getImages(jsonData));
     } catch (error) {
@@ -13,9 +13,10 @@ export const getRecetas = async () => {
     }
   };
 
-function getImages(jsonData)
+export function getImages(jsonData)
 {
     jsonData.map(img => blobConverter(img.image));
+    return jsonData;
 }
 
 async function blobConverter(urlImg){
@@ -23,7 +24,6 @@ async function blobConverter(urlImg){
     await fetch(urlImg)
     .then(res => res.blob())
     .then(blob => blobImg=blob);
-    // Crear los elementos
     crearElementos(blobImg);
 }
 
@@ -32,10 +32,12 @@ let index = 0;
 function crearElementos(blobImg)
 {
     let img = document.createElement("img");
-    img.src = URL.createObjectURL(blobImg)
+    img.src = URL.createObjectURL(blobImg);
+    img.alt = "Foto Decorativa";
     imageArray[index] = img;
     console.log("Imagen: " + index + " es: " + imageArray[index]);
     index++;
+    return imageArray;
 }
   
   // Agregar/Modificar una Receta
