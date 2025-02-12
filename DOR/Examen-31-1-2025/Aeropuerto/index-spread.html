@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu vuelo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .disabled {
+            color: #999;
+        }
+
+        .error{
+            color: red;
+            margin: 0;
+            font-size: small;
+        }
+
+        .submit
+        {
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reserve su vuelo</h1>
+    <form id="flight-form">
+        <label for="airport">Aeropuerto de salida:</label>
+        <select id="airport" required>
+            <option value="" disabled selected>Seleccione un aeropuerto</option>
+            <option value="narnia">Narnia</option>
+            <option value="pueblo-paleta">Pueblo Paleta</option>
+            <option value="san-andreas">San Andreas</option>
+        </select>
+
+        <label for="destination">Destino:</label>
+        <select id="destination" required>
+            <option value="" disabled selected>Seleccione un destino</option>
+            <option value="anvil">Anvil</option>
+            <option value="ciudad-asuka" >Ciudad Asuka</option>
+            <option value="hogwartz" >Hogwartz</option>
+            <option value="mordor" >Mordor</option>
+            <option value="oasis-springs" >Oasis Springs</option>
+            <option value="pueblo-paleta" >Pueblo Paleta</option>
+            <option value="racoon-city" >Racoon City</option>
+            <option value="san-andreas" >San Andreas</option>
+            <option value="vice-city" >Vice City</option>
+        </select>
+
+        <label for="departure-date">Fecha de salida:</label>
+        <input type="date" id="departure-date" default="date.now()" required>
+
+        <label for="return-date">Fecha de regreso:</label>
+        <input type="date" id="return-date" required>
+        <p id="error-message" class="error"></p>
+
+        <button class="submit" type="submit">¡Reserva tu vuelo!</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("flight-form");
+        const airportSelect = document.getElementById("airport");
+        const destinationSelect = document.getElementById("destination");
+        const departureDateInput = document.getElementById("departure-date");
+        const returnDateInput = document.getElementById("return-date");
+        const errorMessage = document.getElementById("error-message");
+        const today = new Date().toISOString().split('T')[0]; // Obtiene en today solo la fecha de la función Date() de javascript.
+        departureDateInput.setAttribute('min', today); // Se puede seleccionar la fecha solo a partor de hoy.
+        
+        let destinos = [...destinationSelect.children]; // Todas las opciones del selector destinationSelect.
+
+        const destinations = {
+            "narnia": ["hogwartz", "pueblo-paleta", "san-andreas", "racoon-city"],
+            "pueblo-paleta": ["san-andreas", "mordor", "narnia", "anvil", "oasis-springs"],
+            "san-andreas": ["vice-city", "pueblo-paleta", "narnia", "racoon-city", "ciudad-asuka"]
+        };
+
+        let departure = ""; // Contendrá el Aeropurto de salida.
+
+        destinationSelect.disabled = true; // Deshabilito el selector de aeropuerto de salida hasta seleccionar uno de partida.
+        returnDateInput.disabled = true; // Deshabilito el selector de fecha de vuelta hasta seleccionar la de partida.
+
+        airportSelect.addEventListener("change", () =>{
+            destinos.forEach(destino => {
+                destino.setAttribute("disabled", "")
+            }); // Deshabilito todas las opciones.
+            departure = airportSelect.value; // Asigno a departue el aeropuerto de partida.
+            let destinosDisponibles = destinations[departure]; // Asigno a destinosDisponibles el array de destinos de ese aeropuerto.
+            destinationSelect.disabled = false; // Habilito el selector de aeropuertos de destino.
+
+            destinos
+            .filter(destino => destinosDisponibles.includes(destino.value))
+            .forEach(destino => destino.removeAttribute("disabled")); // Habilito solo los destinos disponibles del aeropuerto de salida.
+        }); // Listener para habilitar el selector de destinos al seleccionar un aeropuerto de partida.
+
+        departureDateInput.addEventListener("change", () => {
+            returnDateInput.disabled = false;
+            returnDateInput.setAttribute('min', departureDateInput.value); // Establece la fecha mínima de regreso según la fecha de salida seleccionada, Pude ser el mismo día.
+        });
+
+        form.addEventListener("submit", () => {
+            alert ("Tu Vuelo Está Reservado, Prepara las Maletas.");
+        });
+    </script>
+</body>
+</html>

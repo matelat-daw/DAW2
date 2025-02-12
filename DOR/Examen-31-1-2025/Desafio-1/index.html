@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navegación en varios pasos</title>
     <style>
+        html {  
+            scroll-behavior: smooth;  
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -62,6 +66,11 @@
         {
             background-color: bisque;
         }
+
+        button.gray
+        {
+            background-color: gray;
+        }
     </style>
 <link rel="stylesheet" type="text/css" href="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.css"/><script  type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cauce_cookie.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-base.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-evagd.js"></script></head>
 
@@ -76,7 +85,7 @@
         </div>
     </header>
     <div id="stepsContainer">
-        <div class="step active" data-step="1">
+        <div id="paso1" class="step active" data-step="1">
             <h2>Paso 1</h2>
             <p>Este es el primer paso del proceso que estás a punto de iniciar, y sirve como paso preparatorio.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget risus sed sem sollicitudin
@@ -86,7 +95,7 @@
 
             </p>
         </div>
-        <div class="step" data-step="2">
+        <div id="paso2" class="step" data-step="2">
             <h2>Paso 2</h2>
             <p>Aquí se suele ampliar la información del paso 1 o bien contener el elemento central de la tarea.</p>
             <p>Phasellus id sem a eros pellentesque suscipit. Fusce dictum neque vel arcu tempor, sed porta erat
@@ -98,7 +107,7 @@
                 lectus. Proin vel tortor interdum, posuere est non, commodo magna. Curabitur lorem nisl, blandit id
                 facilisis sed, mollis sit amet ipsum.</p>
         </div>
-        <div class="step" data-step="3">
+        <div id="paso3" class="step" data-step="3">
             <h2>Paso 3</h2>
             <p>Si el paso 2 complementa al paso 1, este paso contendrá la parte más importante de la tarea. En caso
                 contrario, este paso contendrá elementos adicionales de apoyo al paso 2</p>
@@ -110,7 +119,7 @@
 
             </p>
         </div>
-        <div class="step" data-step="4">
+        <div id="paso4" class="step" data-step="4">
             <h2>Paso 4</h2>
             <p>Un buen diseño en varios pasos reserva el último paso para mostrar un resumen de comprobación antes de
                 finalizar el proceso.</p>
@@ -149,15 +158,24 @@
             switch(currentStep)
             {
                 case 1:
-                    button2.disabled;
+                    button1.classList.remove("gray");
+                    button2.classList.add("gray");
                     break;
                 case 2:
+                    button1.classList.add("gray");
+                    button2.classList.remove("gray");
                     button2.disabled = false;
+                    button3.classList.add("gray");
                     break;
                 case 3:
+                    button2.classList.add("gray");
+                    button3.classList.remove("gray");
                     button3.disabled = false;
+                    button4.classList.add("gray");
                     break;
                 default:
+                    button4.classList.remove("gray");
+                    button3.classList.add("gray");
                     button4.disabled = false;
                     break;
             }
@@ -170,7 +188,6 @@
 
         prevButton.addEventListener('click', () => {
             /* Decrementa el contador del paso actual */
-
             if (currentStep > 1) {
                 currentStep--;
                 updateSteps();

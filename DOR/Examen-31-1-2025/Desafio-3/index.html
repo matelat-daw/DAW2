@@ -16,6 +16,7 @@
       }
         .progress-bar {
             display: flex;
+            width: 25em;
             margin-top: 10px;
         }
         .progress-bar div {
@@ -24,7 +25,7 @@
             margin-right: 2px;
             background-color: lightgray;
         }
-        .progress-bar div.filled {
+        .progress-bar div.filled-1-2 {
             background-color: red;
         }
         .progress-bar div.filled-3-4 {
@@ -74,54 +75,78 @@
       document.getElementById("progress4"),
       document.getElementById("progress5")
     ];
+    let conditionsMet = 0;
 
     pass.addEventListener("input", () => {
       const value = pass.value;
 
-      //const hasNumber = /\d/.test(value);
+    //   const hasNumber = /\d/.test(value);
+      const hasNumber = /[0-9]/.test(value); // Ambas Expresiones Regulares verifican(test) si value tiene algun número
 
-    //   const hasNumber = Array.from(value).some(char => char.charCodeAt(0) >= 48 && char.charCodeAt(0) <= 57);
-    const hasNumber = Array.from(value).some(char => char.charCodeAt(0) >= 0X30 && char.charCodeAt(0) <= 0X39);
+      const hasLowerCase = /[a-z]/.test(value); // Verifica si el valor entrado en el input tiene alguna minúscula.
+      const hasUpperCase = /[A-Z]/.test(value); // Verifica si el valor entrado en el input tiene alguna mayúscula.
+      const hasSymbol = /[!@#$%^&*¬[\](),.?":{}|<>]/.test(value); // Verifica si el valor tiene alguno de los simbolos en la expresión regular.
+      const hasMinLength = value.length >= 8; // Verifica si value tiene al menos 8 caracteres.
 
-      const hasLowerCase = /[a-z]/.test(value);
-      const hasUpperCase = /[A-Z]/.test(value);
-      const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-      const hasMinLength = value.length >= 8;
-
-      num.style.visibility = hasNumber ? "hidden" : "visible";
+      num.style.visibility = hasNumber ? "hidden" : "visible"; // Si tiene un número oculta el mensaje de error del span con id num.
       min.style.visibility = hasLowerCase ? "hidden" : "visible";
       may.style.visibility = hasUpperCase ? "hidden" : "visible";
       sym.style.visibility = hasSymbol ? "hidden" : "visible";
       len.style.visibility = hasMinLength ? "hidden" : "visible";
 
-      const conditionsMet = [hasNumber, hasLowerCase, hasUpperCase, hasSymbol, hasMinLength].filter(Boolean).length;
+      conditionsMet = [hasNumber, hasLowerCase, hasUpperCase, hasSymbol, hasMinLength].filter(Boolean).length; // A la variable conditionsMet le asigna la cantidad de condiciones que se cumplen, las que están a true suman 1.
 
-      progressBar.forEach((cell, index) => {
-        cell.className = '';
-        if (index < conditionsMet) {
-          if (conditionsMet <= 2) {
-            cell.classList.add('filled');
-          } else if (conditionsMet <= 4) {
-            cell.classList.add('filled-3-4');
-          } else {
-            cell.classList.add('filled-5');
-          }
+        switch(conditionsMet) // Salta a la cantidad de condiciones cumplidas.
+        {
+            case 0:
+                break; // Hay que ponerla vacia, sino se va por default que es la 5ª condición.
+            case 1:
+            case 2:
+                progressBar.forEach((cell, index) => {
+                    if (index < conditionsMet) {
+                        cell.classList.add("filled-1-2");
+                    }
+                });
+                break;
+            case 3:
+            case 4:
+                progressBar.forEach((cell, index) => {
+                    if (index < conditionsMet)
+                    {
+                        cell.classList.add("filled-3-4");
+                    }
+                });
+                break;
+            default:
+                progressBar.forEach(cell => {
+                    cell.classList.add("filled-5")});
         }
-      });
-    });
+
+    //   progressBar.forEach((cell, index) => {
+    //     cell.className = '';
+    //     if (index < conditionsMet) {
+    //       if (conditionsMet <= 2) {
+    //         cell.classList.add('filled-1-2');
+    //       } else if (conditionsMet <= 4) {
+    //         cell.classList.add('filled-3-4');
+    //       } else {
+    //         cell.classList.add('filled-5');
+    //       }
+    //     }
+    //   });
+    }); // Este forEach comprueba cuantas condiciones se han cumplido y cambia los colores de las celdas, idem al switch.
 
     form.addEventListener("submit", (event) => {
-      const value = pass.value;
-      const hasMinLength = value.length >= 8;
 
-      if (!hasMinLength) {
-        event.preventDefault();
-        alert("La contraseña debe tener al menos 8 caracteres.");
-      }
-      else
-      {
-        alert("La contraseña Es Válida se ha enviado correctamente. Gracias.");
-      }
+        if (conditionsMet < 5)
+        {
+            event.preventDefault();
+            alert("La Contraseña Debe Cumplir con Todas las Condiciones. Revisa Bien los Mensajes de Error.");
+        }
+        else
+        {
+            alert("La Contraseña Es Válida se ha Enviado Correctamente. Gracias.");
+        }
     });
   </script>
 </body>
