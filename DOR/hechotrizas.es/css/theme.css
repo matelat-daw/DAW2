@@ -1,0 +1,31 @@
+@media (prefers-color-scheme: dark) /* Media Query que Detecta Cuando el Navegador Está Configurado para Usar el Modo Oscuro (dark). */
+{
+    body{
+        --color-texto: #000;
+        --color-fondo: #dfd;
+        --color-header: #fff;
+        --color-header_back: #050;
+        --color-nav_back: #4a4;
+        --color-aside_back: #aca;
+    }
+}
+
+.dark /* Modo Oscuro */
+{
+    --color-texto: #fff;
+    --color-fondo: #333;
+    --color-header: #fff;
+    --color-header_back: #252525;
+    --color-nav_back: #505050;
+    --color-aside_back: #0a0a0a;
+}
+
+.light /* Modo Claro */
+{
+    --color-texto: #000;
+    --color-fondo: #dfd;
+    --color-header: #fff;
+    --color-header_back: #050;
+    --color-nav_back: #4a4;
+    --color-aside_back: #aca;
+}

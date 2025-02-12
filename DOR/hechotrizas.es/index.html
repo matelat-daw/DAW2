@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hechotrizas.es</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/theme.css">
+  </head>
+
+  <body class="light">
+    <!-- Encabezado de la página -->
+    <header>
+      <h1>hechotrizas.es</h1>
+      <p>Bienvenido a nuestra tienda de productos seleccionados</p>
+      <div>
+        <a href="javascript:changeStyle('light')"><i id="light" class="bi bi-brightness-high double" aria-label="Cambia a Tema Claro"></i></a>
+        <a href="javascript:changeStyle('dark')"><i id="dark" class="bi bi-moon-stars double" aria-label="Cambia a Tema Oscuro"></i></a>
+        <small>Selecciona un Tema</small>
+      </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav class="soraFont">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#about">Acerca de</a></li>
+      </ul>
+    </nav>
+
+    <!-- Barra lateral -->
+    <aside class="soraFont">
+      <h2>Categorías</h2>
+      <ul>
+        <li><a href="#categoria1">Los más vendidos</a></li>
+        <li><a href="#categoria2">Lo más nuevo</a></li>
+        <li><a href="#categoria3">Black Friday</a></li>
+      </ul>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="soraFont">
+      <section id="catalogo">
+        <h2 class="pridiFont invert">Catálogo de Productos</h2>
+        <div class="lista-productos">
+          <article class="producto">
+            <img src="img/smartphone.webp" />
+            <div class="nombre">Smartphone X100 Pro</div>
+            <div class="descripcion">
+              Teléfono de última generación con cámara 108 MP
+            </div>
+            <div class="precio">599.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">233</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/auriculares.webp" />
+            <div class="nombre">Auriculares SupraSound 3D</div>
+            <div class="descripcion">
+              Auriculares con sonido envolvente y cancelación
+            </div>
+            <div class="precio">129.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">946</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/smartwatch.webp" />
+            <div class="nombre">Smartwatch FitTech Pro</div>
+            <div class="descripcion">
+              Reloj inteligente con monitoreo de salud avanzado
+            </div>
+            <div class="precio">199.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">561</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/lavadora.webp" />
+            <div class="nombre">Lavadora EcoWash 3000</div>
+            <div class="descripcion">
+              Lavadora eficiente con ciclo de ahorro de agua
+            </div>
+            <div class="precio">699.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">222</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/consola.webp" />
+            <div class="nombre">Consola GamerMax Ultimate</div>
+            <div class="descripcion">
+              Consola de videojuegos con gráficos 4K y HDR
+            </div>
+            <div class="precio">399.50</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">180</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/bici-electrica.webp" />
+            <div class="nombre">Bicicleta eléctrica RoadFlyer</div>
+            <div class="descripcion">
+              Bicicleta urbana con batería de 100 km de autonomía
+            </div>
+            <div class="precio">850.00</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">306</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/licuadora.webp" />
+            <div class="nombre">Licuadora NutriBlend 500</div>
+            <div class="descripcion">
+              Licuadora potente para batidos y smoothies
+            </div>
+            <div class="precio">59.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">750</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/camara.webp" />
+            <div class="nombre">Cámara ActionPro 4K</div>
+            <div class="descripcion">
+              Cámara deportiva resistente al agua y golpes
+            </div>
+            <div class="precio">159.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">891</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/monitor.webp" />
+            <div class="nombre">Monitor UltraHD 32"</div>
+            <div class="descripcion">
+              Pantalla con resolución 4K y HDR para profesionales
+            </div>
+            <div class="precio">329.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">1575</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/cargador-solar.webp" />
+            <div class="nombre">Cargador solar portátil SunCharge</div>
+            <div class="descripcion">
+              Cargador de dispositivos con paneles solares
+            </div>
+            <div class="precio">29.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">1353</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/robot-cocina.webp" />
+            <div class="nombre">Robot de cocina SmartCook 900</div>
+            <div class="descripcion">
+              Robot multifunción con más de 10 modos de cocción
+            </div>
+            <div class="precio">499.00</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">984</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/impresora-3d.webp" />
+            <div class="nombre">Impresora 3D MakerPro Lite</div>
+            <div class="descripcion">
+              Impresora 3D para proyectos y prototipos personales
+            </div>
+            <div class="precio">399.00</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">1367</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/cuchillos.webp" />
+            <div class="nombre">Set de cuchillos MasterChef Edge</div>
+            <div class="descripcion">
+              Cuchillos de acero inoxidable de alta precisión
+            </div>
+            <div class="precio">89.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★☆☆☆☆</div>
+              <div class="valoraciones">126</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/smart-tv.webp" />
+            <div class="nombre">TV SmartScreen 50"</div>
+            <div class="descripcion">
+              Televisor inteligente con streaming integrado
+            </div>
+            <div class="precio">499.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">1235</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/mochila-antirrobo.webp" />
+            <div class="nombre">Mochila antirrobo SafeBack</div>
+            <div class="descripcion">
+              Mochila con tecnología antirrobo y puerto USB
+            </div>
+            <div class="precio">49.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">1947</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/cafetera.webp" />
+            <div class="nombre">Cafetera expresso BaristaHome</div>
+            <div class="descripcion">
+              Cafetera de calidad profesional para espresso
+            </div>
+            <div class="precio">219.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★☆</div>
+              <div class="valoraciones">1452</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/juego-maletas.webp" />
+            <div class="nombre">Juego de maletas TravelPro Set</div>
+            <div class="descripcion">Set de maletas resistentes y ligeras</div>
+            <div class="precio">159.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">24</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/teclado.webp" />
+            <div class="nombre">Teclado mecánico LightSpeed RGB</div>
+            <div class="descripcion">
+              Teclado gaming con iluminación RGB programable
+            </div>
+            <div class="precio">89.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">1268</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/termometro.webp" />
+            <div class="nombre">Termómetro infrarrojo MedCheck</div>
+            <div class="descripcion">
+              Termómetro sin contacto con pantalla LED
+            </div>
+            <div class="precio">19.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★★</div>
+              <div class="valoraciones">1643</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/mesa-plegable.webp" />
+            <div class="nombre">Mesa plegable WorkAnywhere</div>
+            <div class="descripcion">
+              Escritorio portátil para trabajar desde casa
+            </div>
+            <div class="precio">79.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">452</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/router.webp" />
+            <div class="nombre">Router WiFi MaxSignal 6</div>
+            <div class="descripcion">
+              Router de alta velocidad con tecnología Wi-Fi 6
+            </div>
+            <div class="precio">179.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">1708</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/aspirador-1.webp" />
+            <div class="nombre">Aspiradora RoboClean X1</div>
+            <div class="descripcion">
+              Aspiradora robot con mapeo inteligente
+            </div>
+            <div class="precio">599.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">1754</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/ventilador.webp" />
+            <div class="nombre">Ventilador portátil CoolBreeze</div>
+            <div class="descripcion">
+              Ventilador pequeño con batería recargable
+            </div>
+            <div class="precio">34.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">93</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/lampara.webp" />
+            <div class="nombre">Lámpara LED MultiColor Flexi</div>
+            <div class="descripcion">
+              Lámpara de escritorio con modos de color ajustables
+            </div>
+            <div class="precio">24.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★☆☆☆☆</div>
+              <div class="valoraciones">1723</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/patinete.webp" />
+            <div class="nombre">Patinete eléctrico ZoomGlide 500</div>
+            <div class="descripcion">
+              Patinete urbano con velocidad máxima de 25 km/h
+            </div>
+            <div class="precio">349.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★☆</div>
+              <div class="valoraciones">1694</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/altavoz.webp" />
+            <div class="nombre">Altavoz Bluetooth SoundBlaster</div>
+            <div class="descripcion">
+              Altavoz compacto con sonido de alta fidelidad
+            </div>
+            <div class="precio">69.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">546</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/plancha-2.webp" />
+            <div class="nombre">Plancha de vapor EasySteam Pro</div>
+            <div class="descripcion">Plancha con función de vapor vertical</div>
+            <div class="precio">49.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★☆</div>
+              <div class="valoraciones">1719</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/mountain-bike.webp" />
+            <div class="nombre">Bicicleta de montaña TrailBlazer</div>
+            <div class="descripcion">
+              Bicicleta de montaña con suspensión avanzada
+            </div>
+            <div class="precio">799.00</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★★</div>
+              <div class="valoraciones">677</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/silla-ergonomica.webp" />
+            <div class="nombre">Silla ergonómica OfficeKing</div>
+            <div class="descripcion">
+              Silla de oficina ajustable y ergonómica
+            </div>
+            <div class="precio">129.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★★</div>
+              <div class="valoraciones">758</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/tablet.webp" />
+            <div class="nombre">Tablet SmartTab 10.1"</div>
+            <div class="descripcion">
+              Tablet con pantalla de alta resolución
+            </div>
+            <div class="precio">229.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">335</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/proyector.webp" />
+            <div class="nombre">Proyector CineHome Mini</div>
+            <div class="descripcion">Proyector portátil para cine en casa</div>
+            <div class="precio">199.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">791</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/camara-seguridad.webp" />
+            <div class="nombre">Cámara de seguridad HomeGuard</div>
+            <div class="descripcion">
+              Cámara con visión nocturna y detección de movimiento
+            </div>
+            <div class="precio">79.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">1660</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/sartenes.webp" />
+            <div class="nombre">Sartenes antiadherentes CookMaster</div>
+            <div class="descripcion">
+              Set de sartenes con revestimiento de cerámica
+            </div>
+            <div class="precio">59.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">286</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/humidificador.webp" />
+            <div class="nombre">Humidificador UltraMist</div>
+            <div class="descripcion">
+              Humidificador silencioso para habitaciones grandes
+            </div>
+            <div class="precio">39.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">168</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/estacion-meteorologica.webp" />
+            <div class="nombre">Estación meteorológica WeatherNow</div>
+            <div class="descripcion">
+              Dispositivo con pronóstico y sensores de clima
+            </div>
+            <div class="precio">69.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">1111</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/reloj-despertador.webp" />
+            <div class="nombre">Reloj despertador SmartWake</div>
+            <div class="descripcion">
+              Despertador con alarma gradual y luz ambiental
+            </div>
+            <div class="precio">24.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">1746</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/guitarra-acustica.webp" />
+            <div class="nombre">Guitarra acústica SoundWave</div>
+            <div class="descripcion">
+              Guitarra de madera para principiantes y avanzados
+            </div>
+            <div class="precio">149.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">443</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/secador-pelo.webp" />
+            <div class="nombre">Secador de pelo ProDry Ionic</div>
+            <div class="descripcion">
+              Secador con tecnología iónica y varios ajustes
+            </div>
+            <div class="precio">39.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">1432</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/tenis.webp" />
+            <div class="nombre">Zapatillas deportivas FastTrack</div>
+            <div class="descripcion">
+              Calzado ligero y transpirable para correr
+            </div>
+            <div class="precio">49.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★☆☆☆☆</div>
+              <div class="valoraciones">1590</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/colchon.webp" />
+            <div class="nombre">Colchón ortopédico DreamRest</div>
+            <div class="descripcion">
+              Colchón con espuma de memoria para mejor descanso
+            </div>
+            <div class="precio">499.00</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★☆</div>
+              <div class="valoraciones">1449</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/camara-instantanea.webp" />
+            <div class="nombre">Cámara instantánea RetroSnap</div>
+            <div class="descripcion">
+              Cámara analógica para fotos instantáneas
+            </div>
+            <div class="precio">79.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">582</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/karaoke.webp" />
+            <div class="nombre">Parlante karaoke FunTime Box</div>
+            <div class="descripcion">
+              Parlante con micrófono para sesiones de karaoke
+            </div>
+            <div class="precio">99.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">1122</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/reloj-pared.webp" />
+            <div class="nombre">Reloj de pared moderno TimeArt</div>
+            <div class="descripcion">
+              Reloj de pared con diseño contemporáneo
+            </div>
+            <div class="precio">29.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">1022</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/plancha.webp" />
+            <div class="nombre">Plancha para ropa vertical SteamGo</div>
+            <div class="descripcion">Plancha portátil para ropa con vapor</div>
+            <div class="precio">59.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">1610</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/refrigerador.webp" />
+            <div class="nombre">Refrigerador compacto ChillPoint</div>
+            <div class="descripcion">
+              Mini refrigerador para bebidas y snacks
+            </div>
+            <div class="precio">159.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">1963</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/hervidor.webp" />
+            <div class="nombre">Hervidor eléctrico QuickBoil</div>
+            <div class="descripcion">Hervidor de agua de rápida ebullición</div>
+            <div class="precio">19.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">1943</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/aspirador-2.webp" />
+            <div class="nombre">Robot aspirador SmartSweep Pro</div>
+            <div class="descripcion">
+              Aspirador inteligente con app y control remoto
+            </div>
+            <div class="precio">249.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">67</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/placa-induccion.webp" />
+            <div class="nombre">Placa de inducción QuickHeat</div>
+            <div class="descripcion">
+              Placa de inducción portátil de 2 zonas
+            </div>
+            <div class="precio">79.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★☆☆☆☆</div>
+              <div class="valoraciones">1483</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/gafas-sol.webp" />
+            <div class="nombre">Gafas de sol PolarCool</div>
+            <div class="descripcion">
+              Gafas de sol polarizadas con protección UV
+            </div>
+            <div class="precio">29.90</div>
+            <div class="valoracion">
+              <div class="estrellas">★★☆☆☆</div>
+              <div class="valoraciones">97</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/mochila-senderismo.webp" />
+            <div class="nombre">Mochila de senderismo TrailMaster</div>
+            <div class="descripcion">
+              Mochila con múltiples compartimentos y resistencia
+            </div>
+            <div class="precio">79.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★☆☆</div>
+              <div class="valoraciones">1112</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/kit-costura.webp" />
+            <div class="nombre">Kit de costura HandyStitch</div>
+            <div class="descripcion">
+              Kit portátil de costura con accesorios esenciales
+            </div>
+            <div class="precio">19.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★★</div>
+              <div class="valoraciones">490</div>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="img/monitor-cardiaco.webp" />
+            <div class="nombre">Monitor cardíaco PulseFit Band</div>
+            <div class="descripcion">
+              Pulsera inteligente para monitorear frecuencia
+            </div>
+            <div class="precio">39.99</div>
+            <div class="valoracion">
+              <div class="estrellas">★★★★☆</div>
+              <div class="valoraciones">1188</div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="soraFont">
+      <div id="about">
+        <p>Nuestra empresa</p>
+        <ul>
+          <li>¿Quiénes somos?</li>
+          <li>Nuestros compromisos</li>
+          <li>El Blog de usadito.com</li>
+          <li>Sala de prensa</li>
+          <li>Trabaja con nosotros</li>
+          <li>Encuentra tu tienda</li>
+          <li>Seguridad informática</li>
+          <li>Programa de divulgación de vulnerabilidades</li>
+          <li>Confianza online</li>
+        </ul>
+      </div>
+      <div>
+        <p>Servicios</p>
+        <ul>
+          <li>Financiación</li>
+          <li>Energía</li>
+          <li>Reparaciones</li>
+          <li>Impresión de fotos</li>
+          <li>Mejor precio garantizado</li>
+          <li>Tipos de envíos</li>
+          <li>Garantía plus</li>
+          <li>Talleres y formaciones</li>
+          <li>Tarjeta regalo</li>
+          <li>Solicitar factura</li>
+        </ul>
+      </div>
+      <div>
+        <p>Ofertas y campañas</p>
+        <ul>
+          <li>Campañas activas</li>
+          <li>Semana Web</li>
+          <li>Ofertas de Navidad</li>
+          <li>Black Friday</li>
+          <li>Cyber Monday</li>
+          <li>Ofertas del día</li>
+          <li>Black to school</li>
+          <li>Outlet Days</li>
+        </ul>
+      </div>
+
+      <div></div>
+      <div class="center">
+          <p>&copy; 2024 tiendaonine.com. Todos los derechos reservados.</p>
+          <p id="contacto" class="pridiFont">Contacto: <a href="mailto:contacto@hechotrizas.es">contacto@hechotrizas.es</a></p>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>
