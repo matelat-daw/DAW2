@@ -89,7 +89,7 @@
         const returnDateInput = document.getElementById("return-date");
         const errorMessage = document.getElementById("error-message");
         const today = new Date().toISOString().split('T')[0]; // Obtiene en today solo la fecha de la función Date() de javascript.
-        departureDateInput.setAttribute('min', today); // Se puede seleccionar la fecha solo a partor de hoy.
+        departureDateInput.setAttribute('min', today); // Se puede seleccionar la fecha solo a partir de hoy.
 
         const destinations = {
             "narnia": ["hogwartz", "pueblo-paleta", "san-andreas", "racoon-city"],

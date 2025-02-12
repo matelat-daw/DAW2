@@ -105,8 +105,11 @@
   </form>
 
   <script>
+    const dateSelect = document.getElementById('reservationDate');
     const timeSelect = document.getElementById('reservationTime');
     const timeFormatSelect = document.getElementById('timeFormat');
+    const today = new Date().toISOString().split('T')[0]; // Obtiene en today solo la fecha de la función Date() de javascript.
+    dateSelect.setAttribute('min', today); // Se puede seleccionar la fecha solo a partir de hoy.
 
     // Function to generate time options
     function generateTimeOptions() {
@@ -116,9 +119,10 @@
             for (let minutes = 0; minutes < 60; minutes += 15) {
                 let displayHour = hour;
                 let period = '';
-                const timeString = `${String(displayHour).padStart(2, '0')}:${String(minutes).padStart(2, '0')}${period}`;
+                const timeString = `${displayHour}:${String(minutes).padStart(2, '0')}${period}`;
                 const option = document.createElement('option');
-                option.value = `${String(hour).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+                // option.value = `${String(hour).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+                option.value = timeString;
                 option.textContent = timeString;
                 timeSelect.appendChild(option);
             }
@@ -128,9 +132,10 @@
             for (let minutes = 0; minutes < 60; minutes += 15) {
                 let displayHour = hour;
                 let period = '';
-                const timeString = `${String(displayHour).padStart(2, '0')}:${String(minutes).padStart(2, '0')}${period}`;
+                const timeString = `${displayHour}:${String(minutes).padStart(2, '0')}${period}`;
                 const option = document.createElement('option');
-                option.value = `${String(hour).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+                // option.value = `${String(hour).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+                option.value = timeString;
                 option.textContent = timeString + ' PM';
                 timeSelect.appendChild(option);
             }
@@ -146,7 +151,7 @@
     // Form submission handler
     document.getElementById('reservationForm').addEventListener('submit', (event) => {
       event.preventDefault(); // Prevent form submission for demo purposes
-      alert('Reservation successfully submitted!');
+      alert('Reserva Registrada!');
     });
   </script>
 </body>
