@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options</title>
+</head>
+<body>
+    <h1>Selecciona tu paleta</h1>
+    <br>
+    <form>
+        <label for="palet">Paleta de Color</label><br>
+        <select id="palet" name="palet" required>
+            <option value="">Seleciona una Paleta</option>
+            <option value="rgb">RGB</option>
+            <option value="cmy">CMY</option>
+        </select>
+        <br><br>
+        <label for="colors">Colores</label><br>
+        <select id="colors" name="colors" required>
+            <option value="">Selecciona un Color</option>
+            <option value="Red">Rojo</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+            <option value="Cyan">Cyan</option>
+            <option value="Magenta">Magenta</option>
+            <option value="Yellow">Yellow</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+        const palet = document.getElementById("palet");
+        const color = document.getElementById("colors");
+
+        const colorOptions = {
+            "rgb": ["Red", "Green", "Blue"],
+            "cmy": ["Cyan", "Magenta", "Yellow"]
+        };
+
+        color.setAttribute("disabled", "");
+
+        palet.addEventListener("change", () => {
+            const selectedPalet = palet.value;
+            color.innerHTML = '<option value="">Selecciona un Color</option>'; // Limpia Todas las Opciones.
+
+            if (selectedPalet)
+            {
+                colorOptions[selectedPalet].forEach(col => {
+                    const option = document.createElement("option");
+                    option.value = col;
+                    option.textContent = col;
+                    color.appendChild(option);
+                });
+                color.removeAttribute("disabled");
+            }
+        });
+
+    </script>
+</body>
+</html>
